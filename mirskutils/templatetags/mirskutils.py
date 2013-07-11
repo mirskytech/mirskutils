@@ -5,6 +5,8 @@ from django.core.urlresolvers import reverse
 from django.template.defaultfilters import stringfilter
 from django.template import Context, Template
 from django.contrib.sites.models import Site, RequestSite
+from urllib import urlopen, urlencode, quote, unquote
+
 
 register = template.Library()
 
@@ -35,16 +37,41 @@ def urlAbsolute(viewname, *args, **kwargs):
     return makeAbsolute(urlOptions(viewname, *args, **kwargs))
 
 @register.simple_tag
-def css(stylesheet):
-    if not stylesheet:
-        return ""    
-    return '<link rel="stylesheet" href="%s" />' % makeAbsolute("%s%s" % (settings.STATIC_URL, stylesheet))
+def css(stylesheet, is_absolute=False):
+    '''
+    django templatetag which renders the `<link rel="stylesheet" />` tag
+    usage:
+        {% css 'stylesheet.css' %}
+        {% css 'stylesheet.css' True %}
+        
+    renders as:
+        <link rel="stylesheet" href="/static/stylesheet.css" />
+        <link rel="stylesheet" href="http://example.com/static/stylesheet.css" />
+    '''
     
+    if not stylesheet:
+        return ""
+    uri = "%s%s" % (settings.STATIC_URL, stylesheet)
+    if is_absolute:
+        uri = makeAbsolute(uri)
+    return '<link rel="stylesheet" href="%s" />' % "%s%s" % (settings.STATIC_URL, uri)
+
 @register.simple_tag
 def js(script):
+    '''
+    django templatetag which renders the `<script rel="text/javascript"></script>` tag
+    usage:
+        {% js 'script.js' %}
+        {% js 'script.js' True %}
+        
+    renders as:
+        <script type="text/javascript" src="/static/script.js"></script>
+        <script type="text/javascript" src="http://example.com/static/script.js"></script>
+    '''    
     if not script:
         return ""    
     return '<script type="text/javascript" src="%s"></script>' % makeAbsolute("%s%s" % (settings.STATIC_URL, script))
+
 
 formTemplate = Template('''{% if form.is_multipart and button %}
 	<form enctype="multipart/form-data" method="post" action="{{ action }}">
@@ -72,9 +99,15 @@ formTemplate = Template('''{% if form.is_multipart and button %}
 @register.simple_tag(takes_context=True)
 def renderForm(context, form, button='Submit', action=None, **params):
     '''
-    renders a django form with a specific structure so that forms are consistently displayed.
-    ensure compatibility with jquery.infieldlabel.js with this additional css
+    Renders a django form with a specific structure so that forms are consistently displayed.
+    
+    Ensures compatibility with jquery.infieldlabel.js
         <script>$('form').inFieldLabels()</script>
+        
+    Requires this css:
+        label {
+       
+        }
     '''
     
     ps = {key:value for key,value in params.items() if value }
@@ -90,3 +123,4 @@ def renderForm(context, form, button='Submit', action=None, **params):
         d['action'] = reverse(action, kwargs=ps)
         
     return formTemplate.render(Context(d))
+
