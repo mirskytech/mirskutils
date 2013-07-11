@@ -8,7 +8,7 @@ setup(name='MirskUtils',
       author='Andrew',
       author_email='andrew@mirsky.net',
       url='http://andrew.mirsky.com/',
-      packages=['mirskutils', ],
+      packages=['mirskutils', 'mirskutils.templatetags',],
      )
 
 
