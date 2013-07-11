@@ -4,8 +4,35 @@ from django.contrib.sites.models import Site
 from django.core.urlresolvers import reverse
 from django.template.defaultfilters import stringfilter
 from django.template import Context, Template
+from django.contrib.sites.models import Site, RequestSite
 
 register = template.Library()
+
+@register.simple_tag
+def urlOptions(viewname, *args, **kwargs):
+    params = [ a for a in args if a ]
+    kwparams = { k:v for k,v in kwargs.iteritems() if v }
+    return reverse(viewname, args=params, kwargs=kwparams)
+
+@register.filter(takes_content=True)
+@stringfilter
+def makeAbsolute(context, value):
+    """
+    takes a url and adds the site's domain name to make it an absolute URL
+    """
+    # TODO: should check if the url is already absolute before appending
+    
+    items = {
+        'protocol': "https://" if context.request.is_secure() else "http://",
+        'domain':RequestSite(request).domain,
+        'uri':value
+    }
+    
+    return "%(protocol)s://%(domain)s%(uri)s" % items
+
+@register.simple_tag
+def urlAbsolute(viewname, *args, **kwargs):
+    return makeAbsolute(urlOptions(viewname, *args, **kwargs))
 
 @register.simple_tag
 def css(stylesheet):
@@ -44,6 +71,11 @@ formTemplate = Template('''{% if form.is_multipart and button %}
 
 @register.simple_tag(takes_context=True)
 def renderForm(context, form, button='Submit', action=None, **params):
+    '''
+    renders a django form with a specific structure so that forms are consistently displayed.
+    ensure compatibility with jquery.infieldlabel.js with this additional css
+        <script>$('form').inFieldLabels()</script>
+    '''
     
     ps = {key:value for key,value in params.items() if value }
     
