@@ -23,6 +23,7 @@ dependencies = [
     'jsonfield',
     'psycopg2',
     'requests',
+    'django-sekizai',
     'sphinxcontrib-fancybox',
 ]
 
