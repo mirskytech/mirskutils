@@ -13,7 +13,7 @@ dependencies = [
     'boto',
     'django-admin-tools',
     'django-bitfield',
-    'celery'
+    'celery',
     'django-celery',
     'django-compressor',
     'django-fsm',
