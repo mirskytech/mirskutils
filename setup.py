@@ -10,7 +10,8 @@ setup(name='MirskUtils',
       author_email='andrew@mirsky.net',
       url='http://andrew.mirsky.com/',
       packages=find_packages(),
-      include_package_data=True
+      include_package_data=True,
+      install_requires=['Django','PIL']
      )
 
 
