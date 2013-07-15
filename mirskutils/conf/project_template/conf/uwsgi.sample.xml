@@ -1,0 +1,8 @@
+<uwsgi>
+    <pythonpath>/srv/app/infobitt</pythonpath>
+    <pythonpath>/srv/app</pythonpath>
+    <module>wsgi</module>
+    <chdir>/srv/app/infobitt</chdir>
+    <pythonpath>..</pythonpath>
+</uwsgi>
+

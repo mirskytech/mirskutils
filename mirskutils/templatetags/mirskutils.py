@@ -32,12 +32,12 @@ def makeAbsolute(context, value):
     
     return "%(protocol)s://%(domain)s%(uri)s" % items
 
-@register.simple_tag
-def urlAbsolute(viewname, *args, **kwargs):
-    return makeAbsolute(urlOptions(viewname, *args, **kwargs))
+@register.simple_tag(takes_context=True)
+def urlAbsolute(context, viewname, *args, **kwargs):
+    return makeAbsolute(urlOptions(context, viewname, *args, **kwargs))
 
-@register.simple_tag
-def css(stylesheet, is_absolute=False):
+@register.simple_tag(takes_context=True)
+def css(context, stylesheet, is_absolute=False):
     '''
     django templatetag which renders the `<link rel="stylesheet" />` tag
     usage:
@@ -53,11 +53,11 @@ def css(stylesheet, is_absolute=False):
         return ""
     uri = "%s%s" % (settings.STATIC_URL, stylesheet)
     if is_absolute:
-        uri = makeAbsolute(uri)
+        uri = makeAbsolute(context, uri)
     return '<link rel="stylesheet" href="%s" />' % "%s%s" % (settings.STATIC_URL, uri)
 
-@register.simple_tag
-def js(script):
+@register.simple_tag(takes_context=True)
+def js(context, script, is_absolute=False):
     '''
     django templatetag which renders the `<script rel="text/javascript"></script>` tag
     usage:
@@ -69,8 +69,11 @@ def js(script):
         <script type="text/javascript" src="http://example.com/static/script.js"></script>
     '''    
     if not script:
-        return ""    
-    return '<script type="text/javascript" src="%s"></script>' % makeAbsolute("%s%s" % (settings.STATIC_URL, script))
+        return "" 
+    uri = "%s%s" % (settings.STATIC_URL, script)
+    if is_absolute:
+        uri = makeAbsolute(context, uri)    
+    return '<script type="text/javascript" src="%s"></script>' % uri
 
 
 formTemplate = Template('''{% if form.is_multipart and button %}
