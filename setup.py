@@ -20,7 +20,7 @@ dependencies = [
     'django-retracer',
     'django-sekizai',
     'django-social-auth',
-    'jsonfield',
+    'django-tastypie',
     'psycopg2',
     'requests',
     'django-sekizai',

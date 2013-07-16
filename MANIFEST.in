@@ -1,1 +1,3 @@
 recursive-include mirskutils/templates *
+recursive-include mirskutils/static *
+recursive-include mirskutils/conf *
