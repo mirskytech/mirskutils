@@ -21,6 +21,8 @@ dependencies = [
     'django-sekizai',
     'django-social-auth',
     'django-tastypie',
+    'django-oauth-toolkit',
+    'django-django-cors-headers',
     'psycopg2',
     'requests',
     'django-sekizai',
