@@ -1,7 +1,7 @@
 from tastypie.serializers import Serializer
 from tastypie.authentication import SessionAuthentication
 from tastypie.authorization import Authorization
-from tastypie.resources import ModelResource, Resource
+from tastypie.resources import ModelResource, Resource, ResourceOptions, ModelDeclarativeMetaclass
 
 from oauth2_provider.views import AuthorizationView, TokenView
 from oauth2_provider.views.mixins import OAuthLibMixin
@@ -97,18 +97,26 @@ class URLEncodeSerializer(Serializer):
             #return bundle.obj.user == request.user
         #return False
     
+
+class GenericOptions(ResourceOptions):
+    collection_name = 'data'
+ 
     
+class GenericDeclarativeMetaclass(ModelDeclarativeMetaclass):
     
-    
-    
+    def __new__(cls, name, bases, attrs):
+        new_class = super(GenericDeclarativeMetaclass,cls).__new__(cls, name, bases, attrs)
+        new_class._meta.collection_name = 'data'
+        new_class._meta.serializer = URLEncodeSerializer()
+        new_class._meta.always_return_data = True
+        new_class._meta.authentication = SessionAuthentication()           
+        return new_class    
     
 class GenericResource(ModelResource):
     
-    class Meta:
-        collection_name = 'data'
-        serializer = URLEncodeSerializer()
-        always_return_data = True
-        authentication = SessionAuthentication()
+    __metaclass__ = GenericDeclarativeMetaclass
+
+
         
         
 #class OAuth2Resource(Resource):

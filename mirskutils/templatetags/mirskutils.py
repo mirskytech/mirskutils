@@ -54,7 +54,7 @@ def css(context, stylesheet, is_absolute=False):
     uri = "%s%s" % (settings.STATIC_URL, stylesheet)
     if is_absolute:
         uri = makeAbsolute(context, uri)
-    return '<link rel="stylesheet" href="%s" />' % "%s%s" % (settings.STATIC_URL, uri)
+    return '<link rel="stylesheet" href="%s" />' % "%s" % uri
 
 @register.simple_tag(takes_context=True)
 def js(context, script, is_absolute=False):
