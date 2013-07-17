@@ -21,17 +21,17 @@ dependencies = [
     'django-sekizai',
     'django-social-auth',
     'django-tastypie',
-    'django-oauth-toolkit',
-    'django-django-cors-headers',
+    #'django-oauth-toolkit',
+    #'django-cors-headers',
     'psycopg2',
     'requests',
     'django-sekizai',
     'sphinxcontrib-fancybox',
 ]
 
-
-
-
+links = [
+    'https://github.com/ajmirsky/couchdb-python',
+]
 
 setup(name='MirskUtils',
       version='0.1',
@@ -41,7 +41,8 @@ setup(name='MirskUtils',
       url='http://andrew.mirsky.com/',
       packages=find_packages(),
       include_package_data=True,
-      install_requires=dependencies
+      install_requires=dependencies,
+      dependency_links = links,
      )
 
 
