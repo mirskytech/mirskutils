@@ -115,8 +115,8 @@ class OAuth2Resource(Resource):
     
     def base_urls(self):
         return [
-            url(r'^authorize/$', views.AuthorizationView.as_view(), name="authorize"),
-            url(r'^token/$', views.TokenView.as_view(), name="token"),            
+            url(r'^authorize/$', AuthorizationView.as_view(), name="authorize"),
+            url(r'^token/$', TokenView.as_view(), name="token"),            
         ]
     
     
