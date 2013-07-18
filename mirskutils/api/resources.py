@@ -1,4 +1,3 @@
-from tastypie.serializers import Serializer
 from tastypie.authentication import SessionAuthentication
 from tastypie.authorization import Authorization
 from tastypie.resources import ModelResource, Resource, ResourceOptions, ModelDeclarativeMetaclass
@@ -10,31 +9,7 @@ from django.conf.urls import patterns, url
 
 from tastypie.exceptions import TastypieError, Unauthorized
 
-
-
-
-class URLEncodeSerializer(Serializer):
-    '''CanJS and other client-side frameworks send data with the urlencoded header
-    even if the information is sent by POST. This adds that functionality.'''
-    
-    formats = ['json', 'jsonp', 'xml', 'yaml', 'html', 'plist', 'urlencode']
-    content_types = {
-        'json': 'application/json',
-        'jsonp': 'text/javascript',
-        'xml': 'application/xml',
-        'yaml': 'text/yaml',
-        'html': 'text/html',
-        'plist': 'application/x-plist',
-        'urlencode': 'application/x-www-form-urlencoded',
-        }
-    def from_urlencode(self, data,options=None):
-        """ handles basic formencoded url posts """
-        qs = dict((k, v if len(v)>1 else v[0] )
-            for k, v in urlparse.parse_qs(data).iteritems())
-        return qs
-
-    def to_urlencode(self,content): 
-        pass    
+from serializers import URLEncodeSerializer
     
 #class OAuth2Authorization(Authorization, OAuthLibMixin):
     
