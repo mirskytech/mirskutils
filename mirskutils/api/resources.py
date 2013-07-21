@@ -90,8 +90,13 @@ class GenericDeclarativeMetaclass(ModelDeclarativeMetaclass):
 class GenericResource(ModelResource):
     
     __metaclass__ = GenericDeclarativeMetaclass
+    
+    def obj_create(self, bundle, **kwargs):
 
-
+        if hasattr(bundle.obj.__class__,'user') and bundle.request:
+            return super(GenericResource,self).obj_create(bundle, user=bundle.request.user)
+            
+        return super(GenericResource,self).obj_create(bundle)
         
         
 #class OAuth2Resource(Resource):
