@@ -102,4 +102,3 @@ class ToManyAuthorizedField(ToManyField):
                 m2m_dehydrated.append(self.dehydrate_related(m2m_bundle, m2m_resource, for_list=for_list))
 
         return m2m_dehydrated    
->>>>>>> 01b7f5d052672e56759a5e8f3a9d5a5b1aa64c93
