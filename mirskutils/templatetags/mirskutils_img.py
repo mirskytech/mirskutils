@@ -90,9 +90,9 @@ def srcThumbnail(image_url, width, height, quality=95, rotate=0, blur=0):
         #thumb_file = InMemoryUploadedFile(thumb_io, None, image_name, 'image/%s' % filetype.lower(), thumb_io.len, None)
         thumb_file = ContentFile(thumb_io.getvalue())
         thumb_uri = storage.save(thumb_uri, thumb_file)
-    except Exception:    
+    except Exception as e:    
         ## if an error occured for some reason, no cleanup necessary (?)
-        return image_url
+        return '%s%s' % (settings.MEDIA_URL, image_url)
     
     return '%s%s' % (storage_url, quote(thumb_uri))
 
