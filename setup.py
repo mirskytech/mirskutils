@@ -23,7 +23,7 @@ dependencies = [
     'django-tastypie',
     #'django-oauth-toolkit',
     #'django-cors-headers',
-    'psycopg2',
+    #'psycopg2',
     'requests',
     'django-sekizai',
     'sphinxcontrib-fancybox',
