@@ -2,11 +2,12 @@ import os
 
 from PIL import Image, ImageOps, ImageFile, ImageFilter
 from StringIO import StringIO
-from cStringIO import StringIO as cStringIO
+#from cStringIO import StringIO as cStringIO
 from django.conf import settings
 from django.core.files.storage import default_storage
 from django import template
 from urllib import urlopen, urlencode, quote, unquote
+from django.core.files.base import ContentFile
 
 register = template.Library()
 
@@ -14,6 +15,7 @@ register = template.Library()
 def srcThumbnail(image_url, width, height, quality=95, rotate=0, blur=0):
     
     storage = getattr(settings, 'THUMB_STORAGE', default_storage)
+    storage_url = getattr(settings, 'THUMB_MEDIA_URL', settings.MEDIA_URL)
     local = default_storage
     
     if not image_url:
@@ -36,14 +38,14 @@ def srcThumbnail(image_url, width, height, quality=95, rotate=0, blur=0):
     
     # if the thumbnail exists, then return the full url path
     if storage.exists(thumb_uri):
-        return '%s%s' % (settings.THUMBNAIL_MEDIA_URL, thumb_uri)
+        return '%s%s' % (storage_url, quote(thumb_uri))
         
     # if not, let's find the original image    
     image = None
 
     # check locally
     if local.exists(image_url):
-        image = Image.open(StringIO.StringIO(default_storage.open(image_url)))
+        image = Image.open(local.open(image_url))
     else:        
         # check on s3 ( TODO: we should really check the url to see if it
         #is a playbook url or coming from somewhere else. eg. youtube api image)
@@ -92,7 +94,7 @@ def srcThumbnail(image_url, width, height, quality=95, rotate=0, blur=0):
         ## if an error occured for some reason, no cleanup necessary (?)
         return image_url
     
-    return '%s%s' % (settings.THUMBNAIL_MEDIA_URL, thumb_uri)
+    return '%s%s' % (storage_url, quote(thumb_uri))
 
 
 @register.simple_tag
