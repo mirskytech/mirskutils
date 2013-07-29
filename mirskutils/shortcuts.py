@@ -1,4 +1,6 @@
 import json
+import boto
+import time
 
 from django.conf import settings
 from django.shortcuts import render
@@ -36,4 +38,4 @@ def sign_s3_url(url, timeout=None):
     c = boto.connect_cloudfront(settings.CLOUDFRONT_KEY, settings.CLOUDFRONT_SECRET)
     d = c.get_streaming_distribution_info(settings.CLOUDFRONT_DISTRIBUTION_ID)
     e = int(time.time()+timeout if timeout else getattr(settings, 'CLOUDFRONT_URL_TIMEOUT', 10))
-    s = d.create_signed_url(url, settings.CLOUDFRONT_KEY_PAIR_ID, private_key_file=settings.CLOUDFRONT_PEM)    
+    return d.create_signed_url(url, settings.CLOUDFRONT_KEY_PAIR_ID, private_key_file=settings.CLOUDFRONT_PEM)    
