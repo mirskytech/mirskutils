@@ -127,3 +127,32 @@ def renderForm(context, form, button='Submit', action=None, **params):
         
     return formTemplate.render(Context(d))
 
+@register.simple_tag
+def classIf(tag, *args):
+    if args[0] if args else False:
+        return tag
+    return ''
+
+@register.simple_tag
+def classIfNot(tag, *args):
+    if args[0] if args else False:
+        return ''
+    return tag
+
+
+@register.simple_tag
+def orClass(tag, *args):
+    
+    truisms = [x for x in args if x]
+    if len(truisms):
+        return tag
+    return ''
+
+
+@register.simple_tag
+def andClass(tag, *args):
+    
+    truisms = [x for x in args if x]
+    if len(truisms) == len(args):
+        return tag
+    return ''

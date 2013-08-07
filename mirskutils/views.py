@@ -23,7 +23,7 @@ class LoginRequiredView(View):
         if not request.user.is_authenticated():
             return redirect(self.redirect_401)
     
-        if self.permissions and not request.user.has_perm(*self.permissions):
+        if self.permissions and not request.user.has_perms(self.permissions):
             return redirect(self.redirect_403)
         
         return super(LoginRequiredView, self).dispatch(request, *args, **kwargs)
