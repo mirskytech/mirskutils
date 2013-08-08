@@ -1,21 +1,6 @@
 from django.conf.urls import patterns, include, url
-from django.conf.urls.defaults import handler404, handler500
 from django.views.generic import TemplateView, RedirectView
 from django.core.urlresolvers import reverse_lazy
-
-from django.conf import settings
-
-from django.contrib import admin
-admin.autodiscover()
-
-import core.views
-
-handler500 = core.views.server_fault
-handler404 = core.views.not_found
-handler403 = core.views.permission_denied
-
-if settings.DEBUGGER:
-    import wingdbstub
 
 
 urlpatterns = patterns('',
@@ -25,16 +10,4 @@ urlpatterns = patterns('',
     # url(r'^app/home/?$', TemplateView.as_view(template_name='app-home.html'), name="app-home"),
     # url(r'^app/redirect/?$', RedirectView.as_view(url=reverse_lazy('url-name'))),
     
-         
-
-
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'^admin_tools/', include('admin_tools.urls')),
 )
-
-if settings.DEBUG:
-    urlpatterns = patterns('',
-    url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
-    url(r'', include('django.contrib.staticfiles.urls')),
-) + urlpatterns
