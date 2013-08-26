@@ -128,16 +128,17 @@ def renderForm(context, form, button='Submit', action=None, **params):
     return formTemplate.render(Context(d))
 
 @register.simple_tag
-def classIf(tag, *args):
-    if args[0] if args else False:
-        return tag
-    return ''
+def classIf(boolean, classTrue, classFalse=None):
+    if boolean:
+        return classTrue
+    return classFalse if classFalse else ''
 
 @register.simple_tag
-def classIfNot(tag, *args):
-    if args[0] if args else False:
-        return ''
-    return tag
+def classIfNot(boolean, classFalse, classTrue=None):
+    if not boolean:
+        return classFalse
+    return classTrue if classTrue else ''
+
 
 
 @register.simple_tag
