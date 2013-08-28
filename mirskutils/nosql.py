@@ -71,5 +71,5 @@ class Server(object):
         self.db().copy(doc_or_id, _id)
         return self.load(_id)
     
-    def query(self, view_function):
-        return self.db().query(view_function)
+    def query(self, view_function, **params):
+        return self.db().query(view_function, **params)
