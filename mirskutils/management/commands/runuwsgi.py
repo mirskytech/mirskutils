@@ -39,7 +39,7 @@ class Command(BaseCommand):
             print "gevent 1.x required to run with uwsgi"
             exit(1)
             
-        gevent_cmd = '--loop gevent --async 1000' if options['gevent'] else ''
+        gevent_cmd = '--loop gevent --async 1000 --enable-threads --socket-timeout 30' if not options['gevent'] else ''
         
         self.port = port if port else DEFAULT_PORT        
         http_cmd = '--http-socket :%(port)s' % { 'port':self.port }
@@ -50,6 +50,7 @@ class Command(BaseCommand):
         
         
         command = 'uwsgi -M %s %s %s' % (gevent_cmd, http_cmd, module_cmd)
+        print "COMMAND: %s" % command 
         #--http-socket :%(port)s --module wsgi --async 1000' % { 'port':self.port}
         process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
         process.wait()

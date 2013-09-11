@@ -5,10 +5,10 @@ from django.template.loader import get_template
 from django.template import Context
 from django.forms.widgets import ClearableFileInput, CheckboxInput
 from django.conf import settings
-from core.templatetags.sportscrunch import srcThumbnail2
 from django.template import Context, Template
 from django.utils.safestring import mark_safe
 
+from mirskutils.templatetags.mirskutils_img import srcThumbnail
 
 
 class AutoCompleteSelect(widgets.Select):
@@ -55,10 +55,10 @@ class ImageFileInput(ClearableFileInput):
     
     def render(self, name, value, attrs=None):
         
-        context = {'name':name,'root':settings.THUMBNAIL_MEDIA_URL}
+        context = {'name':name}
 
         if value and hasattr(value, 'url'):
-            context['url'] = srcThumbnail2(value.url, self.width, self.height)
+            context['url'] = srcThumbnail(value.url, self.width, self.height)
             
         t = Template('''{% if url %}<img id="{{ name }}-img" src="{{ url }}">
             <input id="{{ name }}-clear_id" name="{{ name }}-clear" type="checkbox" />
