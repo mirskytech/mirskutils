@@ -4,6 +4,10 @@ from django.core.management.templates import TemplateCommand
 from django.utils.crypto import get_random_string
 from django.utils.importlib import import_module
 
+from git import *
+
+import mirskutils
+
 
 class Command(TemplateCommand):
     help = ("Creates a Django project directory structure for the given "
@@ -29,11 +33,12 @@ class Command(TemplateCommand):
             options['template'] = os.path.join(mirskutils.__path__[0], 'conf/project_template')
         
         import itertools        
-        exts = [options['extensions'], ['html','js','md','txt','css']]
-        options['extensions'] = list(itertools.chain(*exts))
+        exts = [options['extensions'], ['js','md','css']]
+        options['extensions'] = list(itertools.chain(*exts))      
         
-        # Create a random SECRET_KEY hash to put it in the main settings.
-        chars = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'
-        options['secret_key'] = get_random_string(50, chars)        
-
         super(Command, self).handle('project', project_name, target, **options)
+        
+        #prj_path = os.path.join(os.path.abspath(os.path.dirname(__file__)),project_name)
+        #repo = Repo.init(prj_path, bare=False)
+        
+        

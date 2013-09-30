@@ -25,21 +25,18 @@ STATICFILES_DIRS = ( )
 for root, dirs, files in os.walk(PROJECT_PATH):
     if 'static' in dirs: STATICFILES_DIRS = STATICFILES_DIRS + (os.path.join(root, 'static'),)
 
+SECRET_FILE = os.path.join(PROJECT_PATH, 'secret.txt')
 try:
-    SECRET_KEY
-except NameError:
-    SECRET_FILE = os.path.join(PROJECT_PATH, 'secret.txt')
+    SECRET_KEY = open(SECRET_FILE).read().strip()
+except IOError:
     try:
-        SECRET_KEY = open(SECRET_FILE).read().strip()
+        import random
+        SECRET_KEY = ''.join([random.SystemRandom().choice('abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)') for i in range(50)])
+        secret = file(SECRET_FILE, 'w')
+        secret.write(SECRET_KEY)
+        secret.close()
     except IOError:
-        try:
-            import random
-            SECRET_KEY = ''.join([random.SystemRandom().choice('abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)') for i in range(50)])
-            secret = file(SECRET_FILE, 'w')
-            secret.write(SECRET_KEY)
-            secret.close()
-        except IOError:
-            Exception('Please create a %s file with random characters  to generate your secret key!' % SECRET_FILE)
+        Exception('Please create a %s file with random characters  to generate your secret key!' % SECRET_FILE)
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',

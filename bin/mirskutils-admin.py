@@ -12,8 +12,5 @@ if __name__ == "__main__":
         from mirskutils.management.commands.startproject import Command
         newproject = Command()
         newproject.run_from_argv(sys.argv)
-        
-
-    
-    
-    management.execute_from_command_line()
+    else:
+        management.execute_from_command_line()
