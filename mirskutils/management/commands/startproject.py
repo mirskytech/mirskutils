@@ -1,3 +1,4 @@
+import os
 from django.core.management.base import CommandError
 from django.core.management.templates import TemplateCommand
 from django.utils.crypto import get_random_string
@@ -29,6 +30,10 @@ class Command(TemplateCommand):
         
         import itertools        
         exts = [options['extensions'], ['html','js','md','txt','css']]
-        options['extensions'] = list(itertools.chain(*exts))        
+        options['extensions'] = list(itertools.chain(*exts))
+        
+        # Create a random SECRET_KEY hash to put it in the main settings.
+        chars = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'
+        options['secret_key'] = get_random_string(50, chars)        
 
         super(Command, self).handle('project', project_name, target, **options)
