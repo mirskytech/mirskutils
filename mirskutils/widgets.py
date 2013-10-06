@@ -29,17 +29,18 @@ class AutoCompleteSelect(widgets.Select):
             if isinstance(self.choices, basestring):
                 d.update({'value':value.pk, 'label':value.display_name()})
             else:
-                l  = (item for item in self.choices if item[0]== value).next()
-                d.update({'value':value, 'label':l[1]})
+                _choices = dict([(str(c[0]),c[1]) for c in self.choices])
+                if value in _choices:
+                    d.update({'value':value, 'label':_choices[value]})
         
         return t.render(Context(d))
     
     class Media:
         css =  {
-            'all':('css/smoothness/jquery-ui-1.10.0.custom.css',)
+            'all':('lib/jqueryui/jquery-ui.custom.css',)
         }
-        js = ('lib/jquery/jquery-1.10.2.js',
-            'js/jquery-ui-1.10.0.custom.js',)
+        js = ('lib/jquery/jquery.min.js',
+            'lib/jqueryui/jquery-ui.custom.min.js',)
 
 class ImageFileInput(ClearableFileInput):
     
