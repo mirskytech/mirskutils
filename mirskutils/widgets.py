@@ -5,10 +5,10 @@ from django.template.loader import get_template
 from django.template import Context
 from django.forms.widgets import ClearableFileInput, CheckboxInput
 from django.conf import settings
-from core.templatetags.sportscrunch import srcThumbnail2
 from django.template import Context, Template
 from django.utils.safestring import mark_safe
 
+from mirskutils.templatetags.mirskutils_img import srcThumbnail
 
 
 class AutoCompleteSelect(widgets.Select):
@@ -29,17 +29,18 @@ class AutoCompleteSelect(widgets.Select):
             if isinstance(self.choices, basestring):
                 d.update({'value':value.pk, 'label':value.display_name()})
             else:
-                l  = (item for item in self.choices if item[0]== value).next()
-                d.update({'value':value, 'label':l[1]})
+                _choices = dict([(str(c[0]),c[1]) for c in self.choices])
+                if value in _choices:
+                    d.update({'value':value, 'label':_choices[value]})
         
         return t.render(Context(d))
     
     class Media:
         css =  {
-            'all':('css/smoothness/jquery-ui-1.10.0.custom.css',)
+            'all':('lib/jqueryui/jquery-ui.custom.css',)
         }
-        js = ('lib/jquery/jquery-1.10.2.js',
-            'js/jquery-ui-1.10.0.custom.js',)
+        js = ('lib/jquery/jquery.min.js',
+            'lib/jqueryui/jquery-ui.custom.min.js',)
 
 class ImageFileInput(ClearableFileInput):
     
@@ -55,10 +56,10 @@ class ImageFileInput(ClearableFileInput):
     
     def render(self, name, value, attrs=None):
         
-        context = {'name':name,'root':settings.THUMBNAIL_MEDIA_URL}
+        context = {'name':name}
 
         if value and hasattr(value, 'url'):
-            context['url'] = srcThumbnail2(value.url, self.width, self.height)
+            context['url'] = srcThumbnail(value.url, self.width, self.height)
             
         t = Template('''{% if url %}<img id="{{ name }}-img" src="{{ url }}">
             <input id="{{ name }}-clear_id" name="{{ name }}-clear" type="checkbox" />

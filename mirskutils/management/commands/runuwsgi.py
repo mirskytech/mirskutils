@@ -12,7 +12,7 @@ class Command(BaseCommand):
     help = ("MirskyUtils running server ")
 
     option_list = BaseCommand.option_list + (
-        make_option('-g','--disable-gevent', action="store_true", dest="gevent", help="gevent asyncronous loop in order to support cross-threading communication"),
+        make_option('-g','--enable-gevent', action="store_true", dest="gevent", help="gevent asyncronous loop in order to support cross-threading communication"),
         make_option('-s','--https', action="store_true", dest="https", help="forwards all requests to https protocol"),
         make_option('-m', '--module', action='store', type='string', dest='module')
         )
@@ -29,6 +29,9 @@ class Command(BaseCommand):
         if StrictVersion(out.strip()) < StrictVersion('1.9.4'):
             print "warning: this has only been tested against uwsgi v1.9.4"
 
+        gevent_cmd = ''
+
+        if options['gevent']:
         try:
             import gevent
         except ImportError:
@@ -39,7 +42,7 @@ class Command(BaseCommand):
             print "gevent 1.x required to run with uwsgi"
             exit(1)
             
-        gevent_cmd = '--loop gevent --async 1000 --enable-threads --socket-timeout 30' if not options['gevent'] else ''
+                gevent_cmd = '--loop gevent --async 1000 --enable-threads --socket-timeout 30' if not options['gevent'] else ''
         
         self.port = port if port else DEFAULT_PORT        
         http_cmd = '--http-socket :%(port)s' % { 'port':self.port }

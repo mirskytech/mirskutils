@@ -21,12 +21,24 @@ dependencies = [
     'django-sekizai',
     'django-social-auth',
     'django-tastypie',
+
     #'django-oauth-toolkit',
     #'django-cors-headers',
-    #'psycopg2',
+    #'django-oauth2-provider',
+    
+    'psycopg2',
     'requests',
     'django-sekizai',
     'sphinxcontrib-fancybox',
+    'django-couchdb',
+    'cython', 
+    'git+ssh://github.com/surfly/gevent.git@1.0rc3#egg=gevent',
+    'uwsgi',
+    'beautifulsoup4',
+    
+    
+    
+    
 ]
 
 links = [
@@ -38,6 +50,7 @@ setup(name='MirskUtils',
       description='Mirsky Utility Functions',
       author='Andrew',
       author_email='andrew@mirsky.net',
+      scripts=['bin/mirskutils-admin.py'],
       url='http://andrew.mirsky.com/',
       packages=find_packages(),
       include_package_data=True,
