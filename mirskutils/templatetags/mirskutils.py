@@ -54,7 +54,18 @@ def css(context, stylesheet, is_absolute=False):
     uri = "%s%s" % (settings.STATIC_URL, stylesheet)
     if is_absolute:
         uri = makeAbsolute(context, uri)
-    return '<link rel="stylesheet" href="%s" />' % "%s" % uri
+    return '<link rel="stylesheet" type="text/css" href="%s" />' % "%s" % uri
+
+
+@register.simple_tag(takes_context=True)
+def less(context, stylesheet, is_absolute=False):
+    
+    if not stylesheet:
+        return ""
+    uri = "%s%s" % (settings.STATIC_URL, stylesheet)
+    if is_absolute:
+        uri = makeAbsolute(context, uri)
+    return '<link rel="stylesheet" type="text/less" href="%s" />' % uri
 
 @register.simple_tag(takes_context=True)
 def js(context, script, is_absolute=False):
@@ -89,7 +100,7 @@ formTemplate = Template('''{% if form.is_multipart and button %}
 	  <p class="{%if field.field.widget.input_type %}infield {% endif %} {{ field.name }}">
          {{ field.label_tag }} {{ field }}
          {% if field.errors %}<div class="error"><div class="valign">{{ field.errors }}</div></div>{% endif %}
-         {% if field.help_text %}<a class="tooltip" title="{{ field.help_text }}"><span class="sc-icon sc-icon-question"></span></a>{% endif %}
+         {% if field.help_text %}<a class="tooltip" title="{{ field.help_text }}"><span class="glyphicons circle_ok"></span></a>{% endif %}
       </p>
 	{% endfor %}
     {% if button %}

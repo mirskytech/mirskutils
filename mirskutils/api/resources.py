@@ -2,8 +2,8 @@ from tastypie.authentication import SessionAuthentication
 from tastypie.authorization import Authorization
 from tastypie.resources import ModelResource, Resource, ResourceOptions, ModelDeclarativeMetaclass
 
-from oauth2_provider.views import AuthorizationView, TokenView
-from oauth2_provider.views.mixins import OAuthLibMixin
+#from oauth2_provider.views import AuthorizationView, TokenView
+#from oauth2_provider.views.mixins import OAuthLibMixin
 
 from django.conf.urls import patterns, url
 

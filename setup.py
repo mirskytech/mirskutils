@@ -21,12 +21,24 @@ dependencies = [
     'django-sekizai',
     'django-social-auth',
     'django-tastypie',
+
     #'django-oauth-toolkit',
     #'django-cors-headers',
-    #'psycopg2',
+    #'django-oauth2-provider',
+    
+    'psycopg2',
     'requests',
     'django-sekizai',
     'sphinxcontrib-fancybox',
+    'django-couchdb',
+    'cython', 
+    'git+ssh://github.com/surfly/gevent.git@1.0rc3#egg=gevent',
+    'uwsgi',
+    'beautifulsoup4',
+    
+    
+    
+    
 ]
 
 links = [
