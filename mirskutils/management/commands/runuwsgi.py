@@ -39,7 +39,7 @@ class Command(BaseCommand):
             print "gevent 1.x required to run with uwsgi"
             exit(1)
             
-        gevent_cmd = '--loop gevent --async 1000' if options['gevent'] else ''
+        gevent_cmd = '--loop gevent --async 1000 --enable-threads --socket-timeout 30' if not options['gevent'] else ''
         
         self.port = port if port else DEFAULT_PORT        
         http_cmd = '--http-socket :%(port)s' % { 'port':self.port }
