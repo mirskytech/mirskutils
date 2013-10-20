@@ -29,12 +29,12 @@ dependencies = [
     #'psycopg2',
     'requests',
     'django-sekizai',
-    'sphinxcontrib-fancybox',
-    'django-couchdb',
+    #'sphinxcontrib-fancybox',
+    #'django-couchdb',
     'cython', 
-    'git+ssh://github.com/surfly/gevent.git@1.0rc3',
-    'uwsgi',
-    'beautifulsoup4',
+    #'git+ssh://github.com/surfly/gevent.git@1.0rc3',
+    #'uwsgi',
+    #'beautifulsoup4',
     
     
     
