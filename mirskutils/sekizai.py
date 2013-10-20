@@ -9,10 +9,12 @@ from compressor.templatetags.compress import CompressorNode
 from django.template.base import Template
 
 
-def compress(context, data, name):
+def comprss(context, data, name):
     """
     Data is the string from the template (the list of js files in this case)
     Name is either 'js' or 'css' (the sekizai namespace)
     Basically passes the string through the {% compress 'js' %} template tag
     """
+    print "COMPRESSOR GO!"
+    print context, data, name
     return CompressorNode(nodelist=Template(data).nodelist, kind=name, mode='file').render(context=context)
