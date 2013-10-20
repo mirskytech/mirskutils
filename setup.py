@@ -29,12 +29,12 @@ dependencies = [
     #'psycopg2',
     'requests',
     'django-sekizai',
-    #'sphinxcontrib-fancybox',
-    #'django-couchdb',
+    'sphinxcontrib-fancybox',
+    'django-couchdb',
     'cython', 
-    #'git+ssh://github.com/surfly/gevent.git@1.0rc3',
     #'uwsgi',
-    #'beautifulsoup4',
+    'beautifulsoup4',
+    'gevent',
     
     
     
@@ -43,6 +43,8 @@ dependencies = [
 
 links = [
     'https://github.com/ajmirsky/couchdb-python',
+    'git+ssh://github.com/surfly/gevent.git@1.0rc3#egg=gevent',
+    
 ]
 
 setup(name='MirskUtils',
