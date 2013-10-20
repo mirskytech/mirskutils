@@ -26,13 +26,13 @@ dependencies = [
     #'django-cors-headers',
     #'django-oauth2-provider',
     
-    'psycopg2',
+    #'psycopg2',
     'requests',
     'django-sekizai',
     'sphinxcontrib-fancybox',
     'django-couchdb',
     'cython', 
-    'git+ssh://github.com/surfly/gevent.git@1.0rc3#egg=gevent',
+    'git+ssh://github.com/surfly/gevent.git@1.0rc3',
     'uwsgi',
     'beautifulsoup4',
     
