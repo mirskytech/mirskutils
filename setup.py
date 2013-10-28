@@ -30,7 +30,7 @@ dependencies = [
     'requests',
     'django-sekizai',
     'sphinxcontrib-fancybox',
-    #'couchdb-python',
+    'couchdb-python',
     'cython', 
     #'uwsgi',
     'beautifulsoup4',
@@ -42,7 +42,7 @@ dependencies = [
 ]
 
 links = [
-    'git+ssh://github.com/ajmirsky/couchdb-python.git#egg=couchdb',
+    'git+ssh://github.com/ajmirsky/couchdb-python.git#egg=couchdb-python',
     'git+ssh://github.com/surfly/gevent.git@1.0rc3#egg=gevent',
     
 ]
