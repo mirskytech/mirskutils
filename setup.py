@@ -30,11 +30,11 @@ dependencies = [
     'requests',
     'django-sekizai',
     'sphinxcontrib-fancybox',
-    'couchdb',
+    'couchdb >= 0.9.1beta',
     'cython', 
     #'uwsgi',
     'beautifulsoup4',
-    #'gevent',
+    'gevent >= 1.0rc3',
     
     
     
@@ -42,8 +42,8 @@ dependencies = [
 ]
 
 links = [
-    'https://github.com/ajmirsky/couchdb-python/tarball/master#egg=couchdb',
-    'https://github.com/surfly/gevent/tarball/1.0rc3#egg=gevent',
+    'https://github.com/ajmirsky/couchdb-python/tarball/master#egg=couchdb-0.9.1beta',
+    'https://github.com/surfly/gevent/tarball/1.0rc3#egg=gevent-1.0rc3',
     
 ]
 
