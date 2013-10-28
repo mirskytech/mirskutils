@@ -42,7 +42,7 @@ dependencies = [
 ]
 
 links = [
-    'https://github.com/ajmirsky/couchdb-python',
+    'git+ssh://github.com/ajmirsky/couchdb-python.git#egg=couchdb',
     'git+ssh://github.com/surfly/gevent.git@1.0rc3#egg=gevent',
     
 ]
