@@ -34,7 +34,7 @@ dependencies = [
     'cython', 
     #'uwsgi',
     'beautifulsoup4',
-    #'gevent',
+    'gevent',
     
     
     
