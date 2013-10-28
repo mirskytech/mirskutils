@@ -42,8 +42,8 @@ dependencies = [
 ]
 
 links = [
-    'git+ssh://github.com/ajmirsky/couchdb-python.git#egg=couchdb',
-    'git+ssh://github.com/surfly/gevent.git@1.0rc3#egg=gevent',
+    'https://github.com/ajmirsky/couchdb-python/tarball/master#egg=couchdb',
+    'https://github.com/surfly/gevent/tarball/1.0rc3#egg=gevent',
     
 ]
 
