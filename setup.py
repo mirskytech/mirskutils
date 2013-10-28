@@ -30,11 +30,11 @@ dependencies = [
     'requests',
     'django-sekizai',
     'sphinxcontrib-fancybox',
-    'couchdb-python',
+    #'couchdb-python',
     'cython', 
     #'uwsgi',
     'beautifulsoup4',
-    'gevent',
+    #'gevent',
     
     
     
