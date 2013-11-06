@@ -15,13 +15,16 @@ class LoginRequiredView(View):
     permissions = []
     redirect_401 = settings.LOGIN_URL
     redirect_403 = reverse_lazy('forbidden403')
+    check_active = True
+    redirect_active = settings.LOGIN_URL # not used when check_active is false
         
-    #@method_decorator(login_required)
-    #@method_decorator(permission_required(['people.verifier_express',]))
     def dispatch(self, request, *args, **kwargs):
         
         if not request.user.is_authenticated():
             return redirect(self.redirect_401)
+        
+        if not request.user.is_active and self.check_active:
+            return redirect(self.redirect_active)
     
         if self.permissions and not request.user.has_perms(self.permissions):
             return redirect(self.redirect_403)

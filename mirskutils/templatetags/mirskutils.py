@@ -16,21 +16,25 @@ def urlOptions(viewname, *args, **kwargs):
     kwparams = { k:v for k,v in kwargs.iteritems() if v }
     return reverse(viewname, args=params, kwargs=kwparams)
 
+def make_absolute(context, uri):
+    items = {
+        'protocol': "https://" if context.get('request').is_secure() else "http://",
+        'domain':RequestSite(context.get('request')).domain,
+        'uri':uri
+    }
+        
+    return "%(protocol)s%(domain)s%(uri)s" % items    
+    
+
 @register.filter(takes_content=True)
 @stringfilter
-def makeAbsolute(context, value):
+def makeAbsolute(context, uri):
     """
     takes a url and adds the site's domain name to make it an absolute URL
     """
-    # TODO: should check if the url is already absolute before appending
+    return make_absolute(context, uri)
     
-    items = {
-        'protocol': "https://" if context.request.is_secure() else "http://",
-        'domain':RequestSite(request).domain,
-        'uri':value
-    }
-    
-    return "%(protocol)s://%(domain)s%(uri)s" % items
+
 
 @register.simple_tag(takes_context=True)
 def urlAbsolute(context, viewname, *args, **kwargs):
