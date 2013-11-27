@@ -1,4 +1,5 @@
 import os
+import logging
 
 from PIL import Image, ImageOps, ImageFile, ImageFilter
 from StringIO import StringIO
@@ -11,6 +12,8 @@ from django.core.files.base import ContentFile
 
 register = template.Library()
 
+logger = logging.getLogger("mirskutils")
+
 @register.simple_tag
 def srcThumbnail(image_url, width, height, quality=95, rotate=0, blur=0):
     
@@ -18,6 +21,7 @@ def srcThumbnail(image_url, width, height, quality=95, rotate=0, blur=0):
     storage_url = getattr(settings, 'THUMB_MEDIA_URL', settings.MEDIA_URL)
     local = default_storage
     
+    logger.debug("%s processing" % image_url )
     if not image_url:
         return ""
     
@@ -25,27 +29,31 @@ def srcThumbnail(image_url, width, height, quality=95, rotate=0, blur=0):
     
     if image_url.startswith(settings.MEDIA_URL):
         image_url = image_url.replace(settings.MEDIA_URL, "", 1)
-        
+    
     image_dir, image_name = os.path.split(image_url)
     image_prefix, image_ext = os.path.splitext(image_name)
     filetype = {".png": "PNG", ".gif": "GIF"}.get(image_ext, "JPEG")    
     #if we're rotating, needs to be transparent ie png
     if rotate:
+        logger.debug("%s rotation" % image_url)
         image_ext = ".png"
         filetype = "PNG"
     
     thumb_uri = "%s/%s-%sx%s-%s-%s%s" % (image_dir, image_prefix, width, height, rotate, blur, image_ext)
+    logger.debug("%s thumb uri: %s" % (image_url,thumb_uri))
     
     # if the thumbnail exists, then return the full url path
     if storage.exists(thumb_uri):
+        logger.debug("%s already exists" % image_url)
         return '%s%s' % (storage_url, quote(thumb_uri))
         
     # if not, let's find the original image    
     image = None
-
+    logger.debug("%s create image" % image_url)
     # check locally
     if local.exists(image_url):
         image = Image.open(local.open(image_url))
+        logger.debug("%s image found locally" % image_url)
     else:        
         # check on s3 ( TODO: we should really check the url to see if it
         #is a playbook url or coming from somewhere else. eg. youtube api image)
@@ -58,6 +66,7 @@ def srcThumbnail(image_url, width, height, quality=95, rotate=0, blur=0):
             
     if not image:
         # can't find the image, just return the original url
+        logger.debug("%s couldn't find the original image" % image_url)
         return '%s%s' % (settings.MEDIA_URL, image_url)
     
     # let's resize! (from mezzanine tags)
@@ -92,8 +101,10 @@ def srcThumbnail(image_url, width, height, quality=95, rotate=0, blur=0):
         thumb_uri = storage.save(thumb_uri, thumb_file)
     except Exception as e:    
         ## if an error occured for some reason, no cleanup necessary (?)
+        logger.debug("%s image manipulation failed")
         return '%s%s' % (settings.MEDIA_URL, image_url)
     
+    logger.debug("%s thumbnail created" % image_url)
     return '%s%s' % (storage_url, quote(thumb_uri))
 
 
