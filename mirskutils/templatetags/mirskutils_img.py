@@ -101,7 +101,7 @@ def srcThumbnail(image_url, width, height, quality=95, rotate=0, blur=0):
         thumb_uri = storage.save(thumb_uri, thumb_file)
     except Exception as e:    
         ## if an error occured for some reason, no cleanup necessary (?)
-        logger.debug("%s image manipulation failed: %s" % (image_url, e.message))
+        logger.error("%s image manipulation failed: %s" % (image_url, e))
         return '%s%s' % (settings.MEDIA_URL, image_url)
     
     logger.debug("%s thumbnail created" % image_url)
