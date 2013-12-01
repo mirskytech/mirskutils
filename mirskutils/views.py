@@ -3,6 +3,7 @@ from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required, permission_required
 from django.conf import settings
 from django.core.urlresolvers import reverse_lazy
+from django.http import HttpResponse
 
 from django.core.exceptions import PermissionDenied
 
@@ -30,3 +31,9 @@ class LoginRequiredView(View):
             return redirect(self.redirect_403)
         
         return super(LoginRequiredView, self).dispatch(request, *args, **kwargs)
+
+
+class SessionHeartbeat(View):
+    
+    def get(self, request):
+        return HttpResponse('heartbeat')
