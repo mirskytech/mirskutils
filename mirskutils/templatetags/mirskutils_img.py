@@ -15,7 +15,7 @@ register = template.Library()
 logger = logging.getLogger("mirskutils")
 
 @register.simple_tag
-def srcThumbnail(image_url, width, height, quality=95, rotate=0, blur=0):
+def srcThumbnail(image_url, width, height, quality=95, rotate=0, blur=0, aspect=False):
     
     storage = getattr(settings, 'THUMB_STORAGE', default_storage)
     storage_url = getattr(settings, 'THUMB_MEDIA_URL', settings.MEDIA_URL)
@@ -81,6 +81,12 @@ def srcThumbnail(image_url, width, height, quality=95, rotate=0, blur=0):
         width = image.size[0] * height / image.size[1]
     elif height == 0:
         height = image.size[1] * width / image.size[0]
+    elif aspect:
+        _width = image.size[0] * height / image.size[1]
+        if _width > width:
+            height = image.size[1] * width / image.size[0]
+        else:
+            width = _width
     try:
         if image.mode not in ("L", "RGBA"):
             image = image.convert("RGBA")
