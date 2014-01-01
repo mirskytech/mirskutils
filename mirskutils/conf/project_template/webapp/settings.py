@@ -71,15 +71,13 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.csrf', #necessary for csrf protection
 )
 
-ROOT_URLCONF = 'core.urls'
+ROOT_URLCONF = 'urls'
 WSGI_APPLICATION = 'wsgi.application'
 
 INSTALLED_APPS = (
 
-    'admin_tools',
-    'admin_tools.theming',
-    #'admin_tools.menu',
-    'admin_tools.dashboard',
+    'django_bootstrapped_admin.boostrap3',
+    'django_bootstrapped_admin',
         
     'django.contrib.auth',
     'django.contrib.contenttypes',

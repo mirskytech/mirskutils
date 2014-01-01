@@ -11,7 +11,6 @@ dependencies = [
     'South',
     'Sphinx',
     'boto',
-    'django-admin-tools',
     'django-bitfield',
     'celery',
     'django-celery',
@@ -19,14 +18,12 @@ dependencies = [
     'django-fsm',
     'django-retracer',
     'django-sekizai',
-    'django-social-auth',
+    'python-social-app',
     'django-tastypie',
 
-    #'django-oauth-toolkit',
-    #'django-cors-headers',
-    #'django-oauth2-provider',
-    
     #'psycopg2',
+    #'mysqldb',
+
     'requests',
     'django-sekizai',
     'sphinxcontrib-fancybox',
