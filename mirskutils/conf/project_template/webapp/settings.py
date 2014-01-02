@@ -73,6 +73,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 ROOT_URLCONF = 'urls'
 WSGI_APPLICATION = 'wsgi.application'
+AUTH_USER_MODEL ='registration.Individual'
 
 INSTALLED_APPS = (
 
@@ -91,6 +92,7 @@ INSTALLED_APPS = (
     'south',
     'compressor',
     'sekizai',
+    'bootstrapform'
         
 )
 
