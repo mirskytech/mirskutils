@@ -35,7 +35,7 @@ class Konstants:
         return ""
 
     def __getitem__(self,k):
-        return self.display(int(k)) if k else None
+        return self.display(int(k))
     
     def __call__(self, l):
         for ks in self.klist:
