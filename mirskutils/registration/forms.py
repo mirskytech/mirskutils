@@ -1,9 +1,16 @@
 from django import forms
 from django.contrib.auth import get_user_model
+from django.utils.translation import ugettext, ugettext_lazy as _
+from django.contrib.auth import forms as auth_forms
+
 
 class EmailPasswordMixin(forms.Form):
     
-    email = forms.EmailField()
+    email = forms.EmailField(
+        max_length=254,
+        widget=forms.TextInput(attrs={'placeholder':'email address'})
+    )
+    
     new_password = forms.CharField(
         label=_("confirm password"),
         widget=forms.PasswordInput(attrs={'placeholder':'new password'}),
@@ -11,13 +18,15 @@ class EmailPasswordMixin(forms.Form):
         )
     
     def clean_email(self):
-        
-        email = super(EmailPasswordMixin, self).clean_email(self)
-        
-        if get_user_model().objects.filter(username=email):
+                
+        if get_user_model().objects.filter(username=self.cleaned_data['email']):
             raise forms.ValidationError("email is already registered")
 
-        return email
+        return self.cleaned_data['email']
+    
+    def clean(self):
+        return self.cleaned_data
+    
 
 class ConfirmPasswordMixin(forms.Form):
     confirm_password = forms.CharField(
