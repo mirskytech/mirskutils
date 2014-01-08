@@ -18,12 +18,14 @@ dependencies = [
     'django-fsm',
     'django-retracer',
     'django-sekizai',
-    'python-social-app',
     'django-tastypie',
 
-    #'psycopg2',
+    'psycopg2',
     #'mysqldb',
 
+    'python-social-auth',
+    'django-bootstrap-form',
+    'django-admin-bootstrapped',
     'requests',
     'django-sekizai',
     'sphinxcontrib-fancybox',
