@@ -28,9 +28,8 @@ urlpatterns = patterns('',
          
 
 
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    url(r'^', include('django.contrib.auth.urls')), 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^admin_tools/', include('admin_tools.urls')),
 )
 
 if settings.DEBUG:

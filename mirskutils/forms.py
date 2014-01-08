@@ -2,8 +2,6 @@ from django import forms
 
 
 
-
-
 class PlaceholderForm(forms.Form):
     
     placeholders = {}
@@ -13,3 +11,5 @@ class PlaceholderForm(forms.Form):
         for f in self.fields.keys():
             placeholder = self.placeholders[f] if f in self.placeholders else f.replace('_',' ')
             self.fields[f].widget.attrs = {'placeholder': placeholder}
+class BootstrapForm(PlaceholderForm):
+    pass
