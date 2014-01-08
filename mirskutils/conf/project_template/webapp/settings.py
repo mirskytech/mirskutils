@@ -76,10 +76,8 @@ WSGI_APPLICATION = 'wsgi.application'
 
 INSTALLED_APPS = (
 
-    'admin_tools',
-    'admin_tools.theming',
-    #'admin_tools.menu',
-    'admin_tools.dashboard',
+    'django_admin_bootstrapped.bootstrap3',
+    'django_admin_bootstrapped',
         
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -93,6 +91,7 @@ INSTALLED_APPS = (
     'south',
     'compressor',
     'sekizai',
+    'bootstrapform',
         
 )
 

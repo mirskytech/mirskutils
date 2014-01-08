@@ -21,12 +21,15 @@ dependencies = [
     'django-sekizai',
     'django-social-auth',
     'django-tastypie',
+    
+    'bootstrapform',
+    'django-admin-bootstrapped',
 
     #'django-oauth-toolkit',
     #'django-cors-headers',
     #'django-oauth2-provider',
     
-    #'psycopg2',
+    'psycopg2',
     'requests',
     'django-sekizai',
     'sphinxcontrib-fancybox',
