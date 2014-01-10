@@ -46,12 +46,12 @@ class ImageFileInput(ClearableFileInput):
     
     def __init__(self, attrs=None):
         
-        if attrs:
-            self.width = attrs.get('width',100)        
-            self.height = attrs.get('height',100)
+        if attrs and ('width' in attrs or 'height' in attrs):
+            self.width = attrs.get('width',0)        
+            self.height = attrs.get('height',0)
         else:
-            self.width = 100
-            self.height = 100
+            self.width = 0
+            self.height = 75
         super(ImageFileInput,self).__init__(attrs)
     
     def render(self, name, value, attrs=None):
@@ -62,8 +62,15 @@ class ImageFileInput(ClearableFileInput):
             context['url'] = srcThumbnail(value.url, self.width, self.height)
             
         t = Template('''{% if url %}<img id="{{ name }}-img" src="{{ url }}">
+        <div>
+            <label for="{{ name }}-clear_id">Clear</label>     
             <input id="{{ name }}-clear_id" name="{{ name }}-clear" type="checkbox" />
-            <label for="{{ name }}-clear_id">Clear</label><br/>Change{% endif %}            
-            <input id="id_%(name)ss" name="{{ name }}" type="file" />''')
+        </div>
+        {% endif %}
+        <div style="margin-top:10px; padding:0px;">
+            {% if url %}<label for="{{ name }}">Change</label>{% endif %}
+            <input id="id_%(name)ss" name="{{ name }}" type="file" />
+        </div>
+        ''')
         
         return mark_safe(t.render(Context(context)))    

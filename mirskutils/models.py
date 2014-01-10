@@ -23,6 +23,11 @@ class Konstants:
     
     def labels(self):
         return [k.label for k in self.klist]
+    
+    def key(self, v):
+        for ks in self.klist:
+            if v==ks.v: return ks.id
+        return None
 
     def display(self, k):
         for ks in self.klist:
