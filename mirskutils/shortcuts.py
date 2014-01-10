@@ -23,11 +23,11 @@ def render_to_json(request, template, template_data, json_data):
 def json_response(request, data):
     return HttpResponse(json.dumps(data), content_type='application/json')
 
-def jsonp_response(request, data):
+def jsonp_response(request, data, httpresponse = HttpResponse):
     if 'callback' not in request.REQUEST:
         return HttpResponseForbidden('only set up for jsonp response')
     callback = "%s(%s);" % (request.REQUEST.get('callback'), json.dumps(data))   
-    return HttpResponse(callback, 'application/javascript')
+    return httpresponse(callback, 'application/javascript')
 
 def json_redirect(request, path):
     j_data = { 'status':'redirect', 'url':path  }    
