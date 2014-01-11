@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, include, url
 
-import registration.views
+import views
 
 urlpatterns = patterns('',
-                       url(r'^', registration.views.register, name="register"),
+                       url(r'^', views.register, name="register"),
                        )

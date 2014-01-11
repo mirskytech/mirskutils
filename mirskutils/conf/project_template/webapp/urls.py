@@ -1,5 +1,4 @@
 from django.conf.urls import patterns, include, url
-from django.conf.urls.defaults import handler404, handler500
 from django.views.generic import TemplateView, RedirectView
 from django.core.urlresolvers import reverse_lazy
 
@@ -10,9 +9,9 @@ admin.autodiscover()
 
 import core.views
 
-handler500 = core.views.server_fault
-handler404 = core.views.not_found
-handler403 = core.views.permission_denied
+#handler500 = core.views.server_fault
+#handler404 = core.views.not_found
+#handler403 = core.views.permission_denied
 
 if settings.DEBUGGER:
     import wingdbstub
@@ -27,7 +26,7 @@ urlpatterns = patterns('',
     
          
 
-
+    url(r'^', include('webapp.registration.urls')),
     url(r'^', include('django.contrib.auth.urls')), 
     url(r'^admin/', include(admin.site.urls)),
 )

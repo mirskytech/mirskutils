@@ -69,6 +69,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.tz',
     'django.core.context_processors.request',
     'django.core.context_processors.csrf', #necessary for csrf protection
+    'sekizai.context_processors.sekizai'
 )
 
 ROOT_URLCONF = 'webapp.urls'
@@ -94,7 +95,7 @@ INSTALLED_APPS = (
     'sekizai',
     'bootstrapform',
 
-        
+    'webapp.registration',    
 )
 
 EMAIL_USE_TLS=False
