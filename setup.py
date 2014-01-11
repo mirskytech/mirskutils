@@ -20,7 +20,7 @@ dependencies = [
     'django-sekizai',
     'django-tastypie',
     
-    'django-bootstrapform',
+    'django-bootstrap-form',
     'django-admin-bootstrapped',
 
     #'django-oauth-toolkit',
