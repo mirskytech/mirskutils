@@ -10,7 +10,7 @@
     <title>TypeCoach</title>
 
     {% addtoblock 'css' %}
-      {% css 'lib/bootstrap/css/bootstrap.css' %}
+      {% css 'lib/bootstrap3/css/bootstrap.css' %}
     {% endaddtoblock %}
     
     {% render_block 'css' postprocessor 'mirskutils.sekizai.compress' %}
@@ -25,8 +25,9 @@
     {% addtoblock 'js' %}
       {% js 'lib/jquery/jquery.js' %}
       {% js 'lib/jquery/plugins/jquery.cookie.js' %}
-      {% js 'lib/bootstrap/js/bootstrap.min.js'%}
+      {% js 'lib/bootstrap3/js/bootstrap.min.js'%}
       {% js 'lib/jquery/plugins/jquery.placeholder.js' %}
+      {% js 'js/csrf.js' %}
       <script>$(function() { $('input, textarea').placeholder(); });</script>
     {% endaddtoblock %}
     

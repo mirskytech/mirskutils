@@ -77,8 +77,8 @@ AUTH_USER_MODEL ='registration.Individual'
 
 INSTALLED_APPS = (
 
-    'django_bootstrapped_admin.boostrap3',
-    'django_bootstrapped_admin',
+    'django_admin_bootstrapped.bootstrap3',
+    'django_admin_bootstrapped',
         
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -92,7 +92,8 @@ INSTALLED_APPS = (
     'south',
     'compressor',
     'sekizai',
-    'bootstrapform'
+    'bootstrapform',
+
         
 )
 
