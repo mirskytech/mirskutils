@@ -71,7 +71,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.csrf', #necessary for csrf protection
 )
 
-ROOT_URLCONF = 'urls'
+ROOT_URLCONF = 'webapp.urls'
 WSGI_APPLICATION = 'wsgi.application'
 AUTH_USER_MODEL ='registration.Individual'
 
