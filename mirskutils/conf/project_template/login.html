@@ -1,0 +1,27 @@
+{% extends "display/base.html" %}
+{% load sekizai_tags mirskutils bootstrap %}
+
+{% block main_column %}
+
+  {% addtoblock 'css' %}
+	{% less 'display/login.less' %}
+  {% endaddtoblock %}
+  
+  <div class="row">
+	<div class="col-xs-1"></div>
+	<div class="col-xs-5">
+	  <div class="registration-panel">
+		<h3>Sign in to ShareString</h3>
+		<div class="frame">
+		  <form method="POST" action="{% url 'login' %}">
+			{% csrf_token %}
+			{{ form|bootstrap }}
+			<button class="btn btn-default" type="submit">sign in</button>
+		  </form>
+		</div>
+	  </div>
+	</div>
+	<div class="col-xs-6"></div>
+  
+  
+{% endblock main_column %}
