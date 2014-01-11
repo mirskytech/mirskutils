@@ -99,9 +99,7 @@ INSTALLED_APPS = (
 EMAIL_USE_TLS=False
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-#ADMIN_TOOLS_MENU = 'menu.CustomMenu'
-ADMIN_TOOLS_INDEX_DASHBOARD = 'app.dashboard.CustomIndexDashboard'
-ADMIN_TOOLS_APP_INDEX_DASHBOARD = 'app.dashboard.CustomAppIndexDashboard'
+DATABASE_ROUTERS = ['webapp.routers.ModelDatabaseRouter',]
 
 LOGGING = {
     'version': 1,
