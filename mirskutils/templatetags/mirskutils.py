@@ -4,6 +4,7 @@ from django.contrib.sites.models import Site
 from django.core.urlresolvers import reverse
 from django.template.defaultfilters import stringfilter
 from django.template import Context, Template
+from django.utils.safestring import mark_safe
 from django.contrib.sites.models import Site, RequestSite
 from urllib import urlopen, urlencode, quote, unquote
 from django.utils.safestring import mark_safe
@@ -174,8 +175,8 @@ def andClass(tag, *args):
         return tag
     return ''
 
-
 @register.filter(takes_content=True)
 @stringfilter
 def nonBreakHyphens(value):
     return mark_safe(value.replace('-','&#8209;'))
+

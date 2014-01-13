@@ -6,6 +6,9 @@ from django.core.management.base import BaseCommand, OutputWrapper
 
 import argparse
 
+class ArgumentError(Exception):
+    pass
+
 class ArgBaseCommand(BaseCommand):
 
     def add_arguments(self, parser):
@@ -30,6 +33,10 @@ class ArgBaseCommand(BaseCommand):
         #handle_default_options(options) TODO : add default(s) eg. traceback
         try:
             self.execute(args)
+        except ArgumentError as a:
+            stderr = getattr(self, 'stderr', OutputWrapper(sys.stderr, self.style.ERROR))            
+            parser.error(a.message)
+            sys.exit(1)
         except Exception as e:
             # self.stderr is not guaranteed to be set here
             stderr = getattr(self, 'stderr', OutputWrapper(sys.stderr, self.style.ERROR))

@@ -4,7 +4,7 @@ from django.core.urlresolvers import reverse_lazy
 
 from mirskutils.registration.forms import *
 
-from .views import Signup
+from mirskutils.registration.views import *
 
 urlpatterns = patterns('',
                        url(r'^login/$',
@@ -22,26 +22,27 @@ urlpatterns = patterns('',
                             },
                            name="logout"),
                        
-                       url(r'^signup/$',
-                           Signup.as_view(),
-                           name="signup"),
+                       # 
+                       # url(r'signup/$',
+                            #Signup.as_view(),
+                            #name="signup"),
                        
                        # password reset
                        url(r'^password/reset/$',
                            'django.contrib.auth.views.password_reset',
                            {
-                               'template_name':'people/password-reset.html',
+                               'template_name':'registration/password-reset.html',
                                'password_reset_form':PasswordResetForm,
                             },
                            name="password-reset"),
                        
                        url(r'^password/sent/$',
                            'django.contrib.auth.views.password_reset_done',
-                           {'template_name':'people/password-reset-sent.html'}),
+                           {'template_name':'registration/password-reset-sent.html'}),
                        
                        url(r'^password/new/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$',
                            'django.contrib.auth.views.password_reset_confirm',
-                           {'template_name':'people/password-reset-setnew.html',
+                           {'template_name':'registration/password-reset-setnew.html',
                             'set_password_form':PasswordSetNewForm,
                             'extra_context':{
                                 'resetform':PasswordResetForm,
@@ -51,7 +52,7 @@ urlpatterns = patterns('',
                        
                        url(r'^password/complete/$',
                            'django.contrib.auth.views.password_reset_complete',
-                           {'template_name':'people/password-reset-complete.html',
+                           {'template_name':'registration/password-reset-complete.html',
                             'extra_context': {
                                 'loginform':EmailAuthenticationForm,                            
                             }},

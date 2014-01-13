@@ -41,7 +41,8 @@ except IOError:
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    #'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    'compressor.finders.CompressorFinder',
 )
 
 
@@ -69,16 +70,17 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.tz',
     'django.core.context_processors.request',
     'django.core.context_processors.csrf', #necessary for csrf protection
+    'sekizai.context_processors.sekizai'
 )
 
-ROOT_URLCONF = 'urls'
+ROOT_URLCONF = 'webapp.urls'
 WSGI_APPLICATION = 'wsgi.application'
 AUTH_USER_MODEL ='registration.Individual'
 
 INSTALLED_APPS = (
 
-    'django_bootstrapped_admin.boostrap3',
-    'django_bootstrapped_admin',
+    'django_admin_bootstrapped.bootstrap3',
+    'django_admin_bootstrapped',
         
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -92,41 +94,19 @@ INSTALLED_APPS = (
     'south',
     'compressor',
     'sekizai',
-    'bootstrapform'
-        
+    'bootstrapform',
+
+    'webapp.registration',    
 )
 
 EMAIL_USE_TLS=False
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-#ADMIN_TOOLS_MENU = 'menu.CustomMenu'
-ADMIN_TOOLS_INDEX_DASHBOARD = 'app.dashboard.CustomIndexDashboard'
-ADMIN_TOOLS_APP_INDEX_DASHBOARD = 'app.dashboard.CustomAppIndexDashboard'
+DATABASE_ROUTERS = ['webapp.routers.ModelDatabaseRouter',]
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'filters': {
-        'require_debug_false': {
-            '()': 'django.utils.log.RequireDebugFalse'
-        }
-    },
-    'handlers': {
-        'mail_admins': {
-            'level': 'ERROR',
-            'filters': ['require_debug_false'],
-            'class': 'django.utils.log.AdminEmailHandler'
-        }
-    },
-    'loggers': {
-        'django.request': {
-            'handlers': ['mail_admins'],
-            'level': 'ERROR',
-            'propagate': True,
-        },
-    }
-}
-
+COMPRESS_PRECOMPILERS = (
+    ('text/less', 'lessc --include-path=%s {infile} {outfile}' % PROJECT_PATH),
+)
 
 LOGGING = {
     'version': 1,

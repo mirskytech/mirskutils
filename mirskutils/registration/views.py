@@ -18,7 +18,7 @@ class Signup(View):
         
         if form.is_valid():
         
-            u = Individual.objects.create_user(form.cleaned_data['email'],
+            u = User.objects.create_user(form.cleaned_data['email'],
                                          email=form.cleaned_data['email'],
                                          password=form.cleaned_data['new_password'])
             u.save()
