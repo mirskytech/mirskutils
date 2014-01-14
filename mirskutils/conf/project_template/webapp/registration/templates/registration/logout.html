@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load sekizai_tags mirskutils bootstrap %}
+
+{% block content %}
+
+  {% addtoblock 'css' %}
+	{% less 'display/login.less' %}
+  {% endaddtoblock %}
+  
+  <div class="row">
+	<div class="col-xs-4"></div>
+	<div class="col-xs-4">
+	  <h3>Logged Out</h3>
+	</div>
+	<div class="col-xs-4"></div>
+  
+{% endblock content %}
