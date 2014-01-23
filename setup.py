@@ -5,7 +5,7 @@ from setuptools import find_packages
 
 dependencies = [
     'Django',
-    'PIL',
+    'Pillow',
     'jsonfield',
     'django-retracer',
     'South',
@@ -13,7 +13,7 @@ dependencies = [
     'boto',
     'django-bitfield',
     'celery',
-    'django-celery',
+    'django-haystack',
     'django-compressor',
     'django-fsm',
     'django-retracer',
@@ -31,8 +31,6 @@ dependencies = [
     #'mysqldb',
 
     'python-social-auth',
-    'django-bootstrap-form',
-    'django-admin-bootstrapped',
     'requests',
     'django-sekizai',
     'sphinxcontrib-fancybox',
@@ -40,7 +38,7 @@ dependencies = [
     'cython', 
     #'uwsgi',
     'beautifulsoup4',
-    'gevent >= 1.0dev',
+    #'gevent >= 1.0dev',
     
     
     
