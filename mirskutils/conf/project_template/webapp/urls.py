@@ -29,6 +29,7 @@ urlpatterns = patterns('',
     url(r'^', include('webapp.registration.urls')),
     url(r'^', include('django.contrib.auth.urls')), 
     url(r'^admin/', include(admin.site.urls)),
+    #url(r'^heartbeat/$', 'mirskutils.views.SessionHeartbeat'),
 )
 
 if settings.DEBUG:
