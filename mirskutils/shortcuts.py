@@ -11,7 +11,7 @@ from django.http import HttpResponse, HttpResponseForbidden
 from django.utils.safestring import mark_safe
 
 #----------------------------------------------------------------------
-def json_response(request, data):
+def json_response(request, template_or_data, template_data={}, json_data={}):
     """
     response to ajax request with json data (dictionary, list, string, etc)
     
@@ -21,7 +21,11 @@ def json_response(request, data):
     :rtype: django.http.HttpResonse
     
     """
-    return HttpResponse(json.dumps(data), content_type='application/json')
+    
+    if type(template_or_data) in (type({}), type([]), type("")):
+        return HttpResponse(json.dumps(data), content_type='application/json')
+    
+    return template_to_jon(request, template, template_data, json_data)
 
 
 #----------------------------------------------------------------------    
