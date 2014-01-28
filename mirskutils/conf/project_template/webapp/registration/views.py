@@ -1,31 +1,31 @@
-from django.shortcuts import render_to_response, redirect
-from django.contrib.auth.models import User
-from django.template.context import RequestContext
+from django.shortcuts import redirect, render
+from django.views.generic import View
+from django.contrib.auth import authenticate, login as auth_login
 
-from forms import RegistrationForm
+from .models import Individual
 
+from .forms import SignupForm
 
-
-def register(request):
+class Signup(View):
     
-    form = RegistrationForm()
+    def get(self, request):
+        
+        return render(request, 'registration/signup.html', {'signup_form':SignupForm()})
     
-    if request.POST:
-        form = RegistrationForm(request.POST)
+    def post(self, request):
+        
+        form = SignupForm(request.POST)
+        
         if form.is_valid():
-            u = User.objects.create_user(form.cleaned_data['username'],
-                                     email=form.cleaned_data['email'],
-                                     password=form.cleaned_data['password'])
+        
+            u = Individual.objects.create_user(form.cleaned_data['email'],
+                                         email=form.cleaned_data['email'],
+                                         password=form.cleaned_data['new_password'])
+            u.save()
             
+            u = authenticate(username=u.username, password=form.cleaned_data['new_password'])
+            auth_login(request, u)        
+        
             return redirect('home')
         
-            
-            
-    
-    
-    d = {
-    'form':form
-    
-    }
-    
-    return render_to_response('registration/registration_form.html', d, context_instance = RequestContext(request))
+        return render(request, 'registration/signup.html', {'signup_form':form})

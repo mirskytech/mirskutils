@@ -41,7 +41,8 @@ except IOError:
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    #'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    'compressor.finders.CompressorFinder',
 )
 
 
@@ -58,6 +59,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'mirskutils.middleware.SessionIdleTimeout',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -69,9 +71,10 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.tz',
     'django.core.context_processors.request',
     'django.core.context_processors.csrf', #necessary for csrf protection
+    'sekizai.context_processors.sekizai'
 )
 
-ROOT_URLCONF = 'urls'
+ROOT_URLCONF = 'webapp.urls'
 WSGI_APPLICATION = 'wsgi.application'
 AUTH_USER_MODEL ='registration.Individual'
 
@@ -94,7 +97,7 @@ INSTALLED_APPS = (
     'sekizai',
     'bootstrapform',
 
-        
+    'webapp.registration',    
 )
 
 EMAIL_USE_TLS=False
@@ -102,30 +105,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 DATABASE_ROUTERS = ['webapp.routers.ModelDatabaseRouter',]
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'filters': {
-        'require_debug_false': {
-            '()': 'django.utils.log.RequireDebugFalse'
-        }
-    },
-    'handlers': {
-        'mail_admins': {
-            'level': 'ERROR',
-            'filters': ['require_debug_false'],
-            'class': 'django.utils.log.AdminEmailHandler'
-        }
-    },
-    'loggers': {
-        'django.request': {
-            'handlers': ['mail_admins'],
-            'level': 'ERROR',
-            'propagate': True,
-        },
-    }
-}
-
+COMPRESS_PRECOMPILERS = (
+    ('text/less', 'lessc --include-path=%s {infile} {outfile}' % PROJECT_PATH),
+)
 
 LOGGING = {
     'version': 1,

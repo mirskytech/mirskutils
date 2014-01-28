@@ -180,3 +180,6 @@ def andClass(tag, *args):
 def nonBreakHyphens(value):
     return mark_safe(value.replace('-','&#8209;'))
 
+@register.filter
+def mod(num, val):
+    return num % val

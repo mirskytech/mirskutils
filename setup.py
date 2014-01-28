@@ -1,11 +1,24 @@
 #!/usr/bin/env python
 
+import re
+
 from distutils.core import setup
 from setuptools import find_packages
 
+
+VERSIONFILE="mirskutils/_version.py"
+verstrline = open(VERSIONFILE, "rt").read()
+VSRE = r"^__version__ = ['\"]([^'\"]*)['\"]"
+mo = re.search(VSRE, verstrline, re.M)
+if mo:
+    verstr = mo.group(1)
+else:
+    raise RuntimeError("Unable to find version string in %s." % (VERSIONFILE,))
+
+
 dependencies = [
     'Django',
-    'PIL',
+    'Pillow',
     'jsonfield',
     'django-retracer',
     'South',
@@ -13,30 +26,24 @@ dependencies = [
     'boto',
     'django-bitfield',
     'celery',
-    'django-celery',
+    'django-haystack',
     'django-compressor',
     'django-fsm',
     'django-retracer',
     'django-sekizai',
     'django-tastypie',
     
-    'bootstrapform',
+    'django-bootstrap-form',
     'django-admin-bootstrapped',
 
-<<<<<<< HEAD
     #'django-oauth-toolkit',
     #'django-cors-headers',
     #'django-oauth2-provider',
     
     'psycopg2',
-=======
-    'psycopg2',
     #'mysqldb',
 
     'python-social-auth',
-    'django-bootstrap-form',
-    'django-admin-bootstrapped',
->>>>>>> f60272fec7cb8f848aa8ea9bec66d7e05e475501
     'requests',
     'django-sekizai',
     'sphinxcontrib-fancybox',
@@ -44,7 +51,7 @@ dependencies = [
     'cython', 
     #'uwsgi',
     'beautifulsoup4',
-    'gevent >= 1.0dev',
+    #'gevent >= 1.0dev',
     
     
     
@@ -58,7 +65,7 @@ links = [
 ]
 
 setup(name='MirskUtils',
-      version='0.1',
+      version=verstr,
       description='Mirsky Utility Functions',
       author='Andrew',
       author_email='andrew@mirsky.net',
