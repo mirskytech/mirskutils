@@ -23,9 +23,8 @@ def json_response(request, template_or_data, template_data={}, json_data={}):
     """
     
     if type(template_or_data) in (type({}), type([]), type("")):
-        return HttpResponse(json.dumps(data), content_type='application/json')
-    
-    return template_to_jon(request, template, template_data, json_data)
+        return HttpResponse(json.dumps(template_or_data), content_type='application/json')
+    return template_to_json(request, template_or_data, template_data, json_data)
 
 
 #----------------------------------------------------------------------    
