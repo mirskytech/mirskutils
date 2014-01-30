@@ -5,10 +5,10 @@ Section 1
 -------------------
 
 .. automodule:: mirskutils.shortcuts
-   :members:
+   :members: bysource
 
 
 Section 2
 -------------------
 
-Something like this
+Something like this or this

@@ -28,7 +28,7 @@ Project Template
 ------------------
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 3
 
     project_template
     app_template

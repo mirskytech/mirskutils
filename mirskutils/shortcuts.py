@@ -32,9 +32,9 @@ def template_to_json(request, template, template_data, json_data):
     """respond to ajax request by rendering template
 
     Arguments:
-        * **request* : django's request object
-        * **template* : name of the template or a Template object
-        template_data : context, additional to the request context, used to render the template
+        * **request** : django's request object
+        * **template** : name of the template or a Template object
+        * **template_data** : context, additional to the request context, used to render the template
         json_data : extra json data to be included in the response
 
     Return:
