@@ -37,11 +37,8 @@ dependencies = [
     'django-bootstrap-form',
     'django-admin-bootstrapped',
 
-    #'django-oauth-toolkit',
-    #'django-cors-headers',
-    #'django-oauth2-provider',
-    
-    'psycopg2',
+    # moved below
+    #'psycopg2',
     #'mysqldb',
 
     'python-social-auth',
@@ -49,24 +46,37 @@ dependencies = [
     'django-sekizai',
     'sphinxcontrib-fancybox',
     'couchdb >= 0.9.1beta',
-    'cython', 
-    #'uwsgi',
+    'cython',
+
     'lxml',
     'beautifulsoup4',
+    'beautifulsoup',
+    
+    # moved below
     #'gevent >= 1.0dev',
-    
-    
-    
-    
+    #'uwsgi',
 ]
+
+if os.environ.get('WITH_GEVENT',None) == 'true':
+    dependencies.append('gevent >= 1.0dev')
+    
+if os.environ.get('WITH_MYSQL',None) == 'true':
+    dependencies.append('mysqldb')
+else:
+    dependencies.append('psycopg2')
+
+if os.environ.get('SERVER_INSTALL', '') == 'true':
+    dependencies.append('uwsgi')
+
 
 links = [
     'https://github.com/ajmirsky/couchdb-python/tarball/master#egg=couchdb-0.9.1beta',
     'https://github.com/surfly/gevent/tarball/1.0rc3#egg=gevent-1.0dev',
-    
 ]
 
-os.environ['STATIC_DEPS'] = True
+# force lxml to download and compile libxml and libxslt
+# ( primarily for Mac OS X)
+os.environ['STATIC_DEPS'] = 'true'
 
 setup(name='MirskUtils',
       version=verstr,
