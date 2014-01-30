@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Docs for mirskutils
+MirskUtils
 ======================================
 
 * :ref:`util-docs`
@@ -16,7 +16,7 @@ Docs for mirskutils
 Utilities
 ------------------
 
-..toctree::
+.. toctree::
     :maxdepth: 2
 
     shortcuts
@@ -31,7 +31,7 @@ Project Template
     :maxdepth: 2
 
     project_template
-    application_template
+    app_template
     
 
 
