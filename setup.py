@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import re
+import os
 
 from distutils.core import setup
 from setuptools import find_packages
@@ -50,6 +51,7 @@ dependencies = [
     'couchdb >= 0.9.1beta',
     'cython', 
     #'uwsgi',
+    'lxml',
     'beautifulsoup4',
     #'gevent >= 1.0dev',
     
@@ -63,6 +65,8 @@ links = [
     'https://github.com/surfly/gevent/tarball/1.0rc3#egg=gevent-1.0dev',
     
 ]
+
+os.environ['STATIC_DEPS'] = True
 
 setup(name='MirskUtils',
       version=verstr,
