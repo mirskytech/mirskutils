@@ -1,14 +1,21 @@
 Shortcuts
 ======================================
 
-Section 1
--------------------
+json responses
+--------------------------------------
 
 .. automodule:: mirskutils.shortcuts
-   :members:
+   :members: json_render, json_response, jsonp_response
 
+json response conventions
+--------------------------------------
 
-Section 2
--------------------
+.. automodule:: mirskutils.shortcuts
+   :members: json_redirect
+   
+   
+amazon utilities
+----------------------------------------
 
-Something like this or this
+.. automodule:: mirskutils.shortcuts
+   :members: sign_s3_url

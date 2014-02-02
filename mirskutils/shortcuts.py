@@ -14,41 +14,34 @@ from django.utils.safestring import mark_safe
 def json_render(request, template_or_data, template_data={}, json_data={}, httpresponse = HttpResponse):
     """
     Description:
-        respond to ajax request with json data (dictionary, list, string, etc)
-    
-  as the second argument, provide either:
-    
-
+        respond to ajax request with json data (dictionary, list, string, etc) as the second argument, provide either:
     
     Arugments:
-        * **template_or_data** : 
-        data that can be serialized into a json object, specifically ``{}``, ``[]`` or ``""``
-        
-        OR
-    
-        a template (either a django.templates.Template object or a string of an existing template)
+        * **template_or_data** :  (either a django.templates.Template object or a string of an existing template)
     
         * **template_data** : used as context,  if first argument is a template, to render the template. used in addition to the request context
+        
         * **json_data** : additional json information if template provided
+        
         * **httpresponse** : a django http response class, defaults to HttpResponse (200)
         
     Usage:
-        **python** : ``
-    def get(self, request):
-    
-        ...
+        * *python*::
         
-        return json_response(request, 'tasks/list.html', {'list':items, 'name':'My List'}, {'status':'ok'})
+               def get(self, request):
+                    return json_response(request, 'tasks/list.html', {'list':items, 'name':'My List'}, {'status':'ok'})
+
+                    
+        * *javascript*::
+        
+               $.post('/api/list', function(data) {
+                    console.log(data);
+               })
+               
+
+        >>> { 'html' : < rendered template>, 'status':'ok' }
     
-    ``
     
-        **javascript** : ``
-    $.post('/api/list', function(data) {
-       console.log(data);
-    })
-    
-    >> { 'html' : < rendered template>, 'status':'ok' }
-    ``
     
     """    
     
@@ -97,11 +90,13 @@ def jsonp_response(request, data, httpresponse = HttpResponse):
 
 #----------------------------------------------------------------------
 def json_redirect(request, path):
+    """responds with a 'typical' json redirect command"""
     j_data = { 'status':'redirect', 'url':path  }    
     return json_response(request, j_data)
 
 #----------------------------------------------------------------------
 def sign_s3_url(url, timeout=None):
+    """create a signed url for amazon s3 authetication"""
     c = boto.connect_cloudfront(settings.CLOUDFRONT_KEY, settings.CLOUDFRONT_SECRET)
     d = c.get_streaming_distribution_info(settings.CLOUDFRONT_DISTRIBUTION_ID)
     e = int(time.time()+timeout if timeout else getattr(settings, 'CLOUDFRONT_URL_TIMEOUT', 10))

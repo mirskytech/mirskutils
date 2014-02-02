@@ -17,11 +17,11 @@ class LoginRequiredView(View):
     views.py (for function-based views)
 
     Options:
-       permissions: additional permissions to check
-       redirect_401: redirect location for non-authenticated user
-       redirect_403: redirect location for a forbidden operation
-       check_active: include ``is_active`` in the check for authentication
-       redirect_active: redirect location if a user is inactive (n/a when ``check_active = False``)
+       * **permissions** : additional permissions to check
+       * **redirect_401** : redirect location for non-authenticated user
+       * **redirect_403** : redirect location for a forbidden operation
+       * **check_active** : include ``is_active`` in the check for authentication
+       * **redirect_active** : redirect location if a user is inactive (n/a when ``check_active = False``)
 
     """     
 

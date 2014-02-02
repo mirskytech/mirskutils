@@ -30,8 +30,6 @@ Getting Started
     packages
 
 
-
-
 .. _util-docs:
 
 Utilities
@@ -42,8 +40,7 @@ Utilities
 
     shortcuts
     sekizai
-    
-
+    views
 
 
 .. _best-practices-docs:
