@@ -262,6 +262,13 @@ texinfo_documents = [
 
 sys.path.insert(0, os.path.abspath('../..'))
 
+# dummy settings
+from django.conf import global_settings
+setattr(global_settings, 'STATIC_URL', 'static/')
+setattr(global_settings, 'STATIC_ROOT', 'site_static/')
+
+
+
 # setup Django
 from django.conf import settings
-settings.configure()
+settings.configure(global_settings)

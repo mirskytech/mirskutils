@@ -1,4 +1,4 @@
-Shortcuts
+mirskutils.shortcuts
 ======================================
 
 json responses

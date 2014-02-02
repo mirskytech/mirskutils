@@ -28,7 +28,8 @@ Getting Started
     
     installation
     packages
-
+    environment
+    static-files
 
 .. _util-docs:
 
