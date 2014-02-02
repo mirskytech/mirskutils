@@ -5,7 +5,7 @@ Section 1
 -------------------
 
 .. automodule:: mirskutils.shortcuts
-   :members: bysource
+   :members:
 
 
 Section 2

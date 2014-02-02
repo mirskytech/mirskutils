@@ -6,8 +6,29 @@
 MirskUtils
 ======================================
 
+Sections
+----------------------------------
+
+* :ref:`intro-docs`
 * :ref:`util-docs`
-* :ref:`template-docs`
+* :ref:`best-practices-docs`
+
+
+
+
+
+
+.. _intro-docs:
+
+Getting Started
+---------------------
+
+.. toctree::
+    :maxdepth: 2
+    
+    installation
+    packages
+
 
 
 
@@ -20,16 +41,20 @@ Utilities
     :maxdepth: 2
 
     shortcuts
+    sekizai
     
 
-.. _template-docs:
 
-Project Template
+
+.. _best-practices-docs:
+
+"Best" Practices
 ------------------
 
 .. toctree::
     :maxdepth: 3
 
+    wsgi
     project_template
     app_template
     

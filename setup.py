@@ -57,16 +57,21 @@ dependencies = [
     #'uwsgi',
 ]
 
+
+
 if os.environ.get('WITH_GEVENT',None) == 'true':
+    os.environ['SERVER_INSTALL'] = 'true'
     dependencies.append('gevent >= 1.0dev')
-    
+
+if os.environ.get('SERVER_INSTALL', '') == 'true':
+    dependencies.append('uwsgi')
+
 if os.environ.get('WITH_MYSQL',None) == 'true':
     dependencies.append('mysqldb')
 else:
     dependencies.append('psycopg2')
 
-if os.environ.get('SERVER_INSTALL', '') == 'true':
-    dependencies.append('uwsgi')
+
 
 
 links = [
