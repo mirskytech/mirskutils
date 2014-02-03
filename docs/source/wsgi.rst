@@ -1,5 +1,12 @@
 
 .. _wsgi-application:
 
-WSGI Application Configuration
+wsgi application configuration
 ==========================================
+
+< under construction >
+
+see `project_template/conf/uwsgi.ini`
+
+
+
