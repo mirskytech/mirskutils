@@ -29,3 +29,33 @@ class Signup(View):
             return redirect('home')
         
         return render(request, 'registration/signup.html', {'signup_form':form})
+    
+    
+class Account(LoginRequiredView):
+    
+    def get(self, request):
+        
+        
+        d = {
+            'account_form':AccountForm(instance=request.user),
+            'password_form': PasswordChangeForm(user=request.user)
+        }
+        
+        return render(request, 'registration/account.html', d)
+    
+    def post(self, request):
+        
+        form = AccountForm(request.POST, instance=request.user)
+        
+        if form.is_valid():
+            
+            form.save()
+            
+            return redirect('home')
+        
+        d = {
+            'account_form':form,
+            'password_form':PasswordChangeForm(user=user.request)
+        }
+        
+        return render(request, 'registration/account.html', d)           

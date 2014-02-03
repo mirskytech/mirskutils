@@ -7,3 +7,8 @@ from mirskutils.registration.forms import EmailPasswordMixin, ConfirmPasswordMix
 class SignupForm(EmailPasswordMixin, ConfirmPasswordMixin):
     pass
     
+class AccountForm(forms.ModelForm):
+    
+    class Meta:
+        model = Individual
+        fields = ('first_name', 'last_name', 'email')
