@@ -1,3 +1,4 @@
+
 from django.views.generic import View
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required, permission_required
@@ -6,12 +7,22 @@ from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponse
 
 from django.core.exceptions import PermissionDenied
-
-
 from decorators import method_decorator
 
 
 class LoginRequiredView(View):
+    """Subclass of django.views.generic.View which handles authentication
+    replaces the use of @method_decorator in urls.py (for class-based views) or 
+    views.py (for function-based views)
+
+    Options:
+       * **permissions** : additional permissions to check
+       * **redirect_401** : redirect location for non-authenticated user
+       * **redirect_403** : redirect location for a forbidden operation
+       * **check_active** : include ``is_active`` in the check for authentication
+       * **redirect_active** : redirect location if a user is inactive (n/a when ``check_active = False``)
+
+    """     
 
     permissions = []
     redirect_401 = settings.LOGIN_URL
@@ -20,6 +31,9 @@ class LoginRequiredView(View):
     redirect_active = settings.LOGIN_URL # not used when check_active is false
         
     def dispatch(self, request, *args, **kwargs):
+        """
+        overrides the default display method in order to check authentication
+        """
         
         if not request.user.is_authenticated():
             return redirect(self.redirect_401)
@@ -34,6 +48,9 @@ class LoginRequiredView(View):
 
 
 class SessionHeartbeat(View):
+    """Receives a periodic request to keep a users session active
     
+    For use with :func:`middleware.SessionTimeout` and ``{{ STATIC_URL }}js/heartbeat.js``
+    """    
     def get(self, request):
         return HttpResponse('heartbeat')

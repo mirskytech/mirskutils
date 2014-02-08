@@ -4,7 +4,7 @@ from django.core.urlresolvers import reverse_lazy
 
 from mirskutils.registration.forms import *
 
-from .views import Signup
+from .views import Signup, Account
 
 urlpatterns = patterns('',
                        url(r'^login/$',
@@ -55,5 +55,14 @@ urlpatterns = patterns('',
                             'extra_context': {
                                 'loginform':EmailAuthenticationForm,                            
                             }},
-                           name="reset-complete"),                       
-                       )
+                           name="reset-complete"),
+                       url(r'^password/change/$',
+                           'django.contrib.auth.views.password_change',
+                           {
+                               'template_name':'account/account.html',
+                               'post_change_redirect':reverse_lazy('display:home'),
+                               'extra_context':{'account_form':AccountForm()}
+                           },
+                           name='password-change'),                       
+                       ),
+
