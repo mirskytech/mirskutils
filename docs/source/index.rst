@@ -42,6 +42,7 @@ Utilities
     shortcuts
     sekizai
     views
+    forms
 
 
 .. _best-practices-docs:
