@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -8,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Static File Management (css/js) &mdash; MirskUtils 0.1 documentation</title>
+  <title>mirskutils.sekizai &mdash; MirskUtils 0.1 documentation</title>
   
 
   
@@ -22,7 +21,7 @@
 
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:'',
+        URL_ROOT:'./',
         VERSION:'0.1',
         COLLAPSE_INDEX:false,
         FILE_SUFFIX:'.html',
@@ -55,7 +54,7 @@
   
     <link rel="top" title="MirskUtils 0.1 documentation" href="index.html"/>
         <link rel="next" title="mirskutils.views" href="views.html"/>
-        <link rel="prev" title="Shortcuts" href="shortcuts.html"/> 
+        <link rel="prev" title="mirskutils.shortcuts" href="shortcuts.html"/> 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
 
@@ -89,26 +88,33 @@
 <li class="toctree-l2"><a class="reference internal" href="packages.html#package-recommendations">Package Recommendations</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="static-files.html">static file management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="static-files.html#environment-configuration">environment configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="static-files.html#import-statements">import statements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="static-files.html#css-and-less-sass-and-javascript">css (and less,sass) and javascript</a></li>
+</ul>
+</li>
 </ul>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="shortcuts.html">Shortcuts</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="shortcuts.html">mirskutils.shortcuts</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="shortcuts.html#module-mirskutils.shortcuts">json responses</a></li>
 <li class="toctree-l2"><a class="reference internal" href="shortcuts.html#module-mirskutils.shortcuts">json response conventions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="shortcuts.html#module-mirskutils.shortcuts">amazon utilities</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Static File Management (css/js)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#environment-configuration">Environment Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#import-statements">Import Statements</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">mirskutils.sekizai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="views.html">mirskutils.views</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="views.html#background">background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="views.html#migration">migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="views.html#migration-lite">migration-lite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="views.html#module-mirskutils.views">authenticated views</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="views.html">mirskutils.views</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="wsgi.html">WSGI Application Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="project_template.html">Project Template</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="project_template.html#section-1">Section 1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="project_template.html#section-2">Section 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wsgi.html">wsgi application configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_template.html">project template</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="project_template.html#web-application">web application</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="app_template.html">Application Template</a><ul>
@@ -139,7 +145,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>Static File Management (css/js)</li>
+    <li>mirskutils.sekizai</li>
       <li class="wy-breadcrumbs-aside">
         
           <a href="_sources/sekizai.txt" rel="nofollow"> View page source</a>
@@ -150,16 +156,61 @@
 </div>
           <div role="main">
             
-  <div class="section" id="static-file-management-css-js">
-<span id="static-file-management"></span><h1>Static File Management (css/js)<a class="headerlink" href="#static-file-management-css-js" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="environment-configuration">
-<h2>Environment Configuration<a class="headerlink" href="#environment-configuration" title="Permalink to this headline">¶</a></h2>
-<p>static / site_static (includin .gitignore patterns)</p>
+  <div class="section" id="module-mirskutils.sekizai">
+<span id="mirskutils-sekizai"></span><h1>mirskutils.sekizai<a class="headerlink" href="#module-mirskutils.sekizai" title="Permalink to this headline">¶</a></h1>
+<p>Used to process all the js/css files gathered by sekizai through compression / preprocessing utilities utility. Leverages
+django-compressor.</p>
+<dl class="docutils">
+<dt>Sources:</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://gist.github.com/1311010">https://gist.github.com/1311010</a></li>
+</ul>
+</dd>
+<dt>References:</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://github.com/ojii/django-sekizai/issues/4">https://github.com/ojii/django-sekizai/issues/4</a></li>
+<li><a class="reference external" href="https://github.com/jezdez/django_compressor.git">https://github.com/jezdez/django_compressor.git</a></li>
+<li><a class="reference external" href="https://github.com/ojii/django-sekizai.git&#64;0.6">https://github.com/ojii/django-sekizai.git&#64;0.6</a> or later</li>
+</ul>
+</dd>
+</dl>
+<dl class="function">
+<dt id="mirskutils.sekizai.compress">
+<tt class="descclassname">mirskutils.sekizai.</tt><tt class="descname">compress</tt><big>(</big><em>context</em>, <em>data</em>, <em>name</em><big>)</big><a class="headerlink" href="#mirskutils.sekizai.compress" title="Permalink to this definition">¶</a></dt>
+<dd><p>pass static files through the {% compress &lt;file type&gt; %} template tag</p>
+<p>Arguments:</p>
+<ul class="simple">
+<li><strong>data</strong>: the string from the template (the list of js or css files)</li>
+<li><strong>name</strong>: either &#8216;js&#8217; or &#8216;css&#8217; (the sekizai namespace)</li>
+</ul>
+<p>Usage:</p>
+<div class="highlight-python"><div class="highlight"><pre>{% load mirskutils sekizai_tags %}
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;!-- an &#39;addtoblock&#39; can be anywhere within a block/endblock --&gt;
+    &lt;!-- all css files will be compacted together, including preprocessing of less --&gt;
+    {% addtoblock &#39;css&#39; %}
+      {% css &#39;css/app.css&#39; %}
+    {% endaddtoblock %}
+    
+    {% addtoblock &#39;js&#39; %}
+      {% js &#39;js/app.js&#39; %}
+    {% endaddtoblock %}
+    
+    
+    {% render_block &#39;css&#39; postprocessor &#39;mirskutils.sekizai.compress&#39; %}
+  &lt;/head&gt;
+  &lt;body&gt;
+
+    &lt;!-- if debug is True, javascript file &lt;script&gt; tags will be listed here --&gt; 
+    &lt;!-- if debug is False, javascript files will be concatenated and compressed (cached) --&gt;
+    {% render_block &#39;js&#39; postprocessor &#39;mirskutils.sekizai.compress&#39; %}
+  &lt;/body&gt;
+&lt;/html&gt;    
+</pre></div>
 </div>
-<div class="section" id="import-statements">
-<h2>Import Statements<a class="headerlink" href="#import-statements" title="Permalink to this headline">¶</a></h2>
-<p>path relative (debugging vs non debugging configurations)</p>
-</div>
+</dd></dl>
+
 </div>
 
 
@@ -171,7 +222,7 @@
         <a href="views.html" class="btn btn-neutral float-right" title="mirskutils.views"/>Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="shortcuts.html" class="btn btn-neutral" title="Shortcuts"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="shortcuts.html" class="btn btn-neutral" title="mirskutils.shortcuts"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   

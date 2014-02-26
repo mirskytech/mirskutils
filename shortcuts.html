@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -8,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Shortcuts &mdash; MirskUtils 0.1 documentation</title>
+  <title>mirskutils.shortcuts &mdash; MirskUtils 0.1 documentation</title>
   
 
   
@@ -22,7 +21,7 @@
 
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:'',
+        URL_ROOT:'./',
         VERSION:'0.1',
         COLLAPSE_INDEX:false,
         FILE_SUFFIX:'.html',
@@ -54,8 +53,8 @@
 
   
     <link rel="top" title="MirskUtils 0.1 documentation" href="index.html"/>
-        <link rel="next" title="Static File Management (css/js)" href="sekizai.html"/>
-        <link rel="prev" title="“Required” Packages" href="packages.html"/> 
+        <link rel="next" title="mirskutils.sekizai" href="sekizai.html"/>
+        <link rel="prev" title="static file management" href="static-files.html"/> 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
 
@@ -89,26 +88,33 @@
 <li class="toctree-l2"><a class="reference internal" href="packages.html#package-recommendations">Package Recommendations</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="static-files.html">static file management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="static-files.html#environment-configuration">environment configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="static-files.html#import-statements">import statements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="static-files.html#css-and-less-sass-and-javascript">css (and less,sass) and javascript</a></li>
+</ul>
+</li>
 </ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="">Shortcuts</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="">mirskutils.shortcuts</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#module-mirskutils.shortcuts">json responses</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-mirskutils.shortcuts">json response conventions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-mirskutils.shortcuts">amazon utilities</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="sekizai.html">Static File Management (css/js)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="sekizai.html#environment-configuration">Environment Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sekizai.html#import-statements">Import Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sekizai.html">mirskutils.sekizai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="views.html">mirskutils.views</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="views.html#background">background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="views.html#migration">migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="views.html#migration-lite">migration-lite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="views.html#module-mirskutils.views">authenticated views</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="views.html">mirskutils.views</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="wsgi.html">WSGI Application Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="project_template.html">Project Template</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="project_template.html#section-1">Section 1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="project_template.html#section-2">Section 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wsgi.html">wsgi application configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_template.html">project template</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="project_template.html#web-application">web application</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="app_template.html">Application Template</a><ul>
@@ -139,7 +145,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>Shortcuts</li>
+    <li>mirskutils.shortcuts</li>
       <li class="wy-breadcrumbs-aside">
         
           <a href="_sources/shortcuts.txt" rel="nofollow"> View page source</a>
@@ -150,8 +156,8 @@
 </div>
           <div role="main">
             
-  <div class="section" id="shortcuts">
-<h1>Shortcuts<a class="headerlink" href="#shortcuts" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="mirskutils-shortcuts">
+<h1>mirskutils.shortcuts<a class="headerlink" href="#mirskutils-shortcuts" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="module-mirskutils.shortcuts">
 <span id="json-responses"></span><h2>json responses<a class="headerlink" href="#module-mirskutils.shortcuts" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
@@ -177,9 +183,10 @@
 </div>
 </li>
 <li><p class="first"><em>javascript</em>:</p>
-<div class="highlight-python"><pre>$.post('/api/list', function(data) {
+<div class="highlight-python"><div class="highlight"><pre>$.post(&#39;/api/list&#39;, function(data) {
      console.log(data);
-})</pre>
+})
+</pre></div>
 </div>
 </li>
 </ul>
@@ -229,10 +236,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="sekizai.html" class="btn btn-neutral float-right" title="Static File Management (css/js)"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="sekizai.html" class="btn btn-neutral float-right" title="mirskutils.sekizai"/>Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="packages.html" class="btn btn-neutral" title="“Required” Packages"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="static-files.html" class="btn btn-neutral" title="static file management"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   

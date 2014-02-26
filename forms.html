@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Installation &mdash; MirskUtils 0.1 documentation</title>
+  <title>mirskutils.forms &mdash; MirskUtils 0.1 documentation</title>
   
 
   
@@ -53,8 +53,8 @@
 
   
     <link rel="top" title="MirskUtils 0.1 documentation" href="index.html"/>
-        <link rel="next" title="“Required” Packages" href="packages.html"/>
-        <link rel="prev" title="MirskUtils" href="index.html"/> 
+        <link rel="next" title="wsgi application configuration" href="wsgi.html"/>
+        <link rel="prev" title="mirskutils.views" href="views.html"/> 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
 
@@ -80,8 +80,8 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
         
-            <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="">Installation</a></li>
+            <ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="packages.html">&#8220;Required&#8221; Packages</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="packages.html#packages">Packages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="packages.html#install-flags">Install Flags</a></li>
@@ -95,7 +95,7 @@
 </ul>
 </li>
 </ul>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="shortcuts.html">mirskutils.shortcuts</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="shortcuts.html#module-mirskutils.shortcuts">json responses</a></li>
 <li class="toctree-l2"><a class="reference internal" href="shortcuts.html#module-mirskutils.shortcuts">json response conventions</a></li>
@@ -108,6 +108,10 @@
 <li class="toctree-l2"><a class="reference internal" href="views.html#migration">migration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="views.html#migration-lite">migration-lite</a></li>
 <li class="toctree-l2"><a class="reference internal" href="views.html#module-mirskutils.views">authenticated views</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">mirskutils.forms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-mirskutils.forms">forms</a></li>
 </ul>
 </li>
 </ul>
@@ -145,10 +149,10 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>Installation</li>
+    <li>mirskutils.forms</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="_sources/installation.txt" rel="nofollow"> View page source</a>
+          <a href="_sources/forms.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -156,12 +160,34 @@
 </div>
           <div role="main">
             
-  <div class="section" id="installation">
-<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
-<p>install using pip:</p>
-<p><tt class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">git+ssh://git&#64;github.com/ajmirsky/mirskutils.git</span></tt></p>
-<p>or if you&#8217;re interested in staying up-to-date with the latest, install the source:</p>
-<p><tt class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">git+ssh://git&#64;github.com/ajmirsky/mirskutils.git#egg=mirskutils</span></tt></p>
+  <div class="section" id="mirskutils-forms">
+<h1>mirskutils.forms<a class="headerlink" href="#mirskutils-forms" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-mirskutils.forms">
+<span id="forms"></span><h2>forms<a class="headerlink" href="#module-mirskutils.forms" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mirskutils.forms.PlaceholderForm">
+<em class="property">class </em><tt class="descclassname">mirskutils.forms.</tt><tt class="descname">PlaceholderForm</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#mirskutils.forms.PlaceholderForm" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd><p class="first">the <tt class="docutils literal"><span class="pre">placeholder</span></tt> attribute is common but none of the django widgets
+include it by default. extending from this form, widgets will take their
+<tt class="docutils literal"><span class="pre">placeholder</span></tt> attribute value from (in priority order):</p>
+<ul class="last simple">
+<li><tt class="docutils literal"><span class="pre">placeholders</span></tt> object attribute with dictionary name/placeholder pairings</li>
+<li>from a widget&#8217;s label attribute</li>
+<li>from a widget&#8217;s name</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="mirskutils.forms.BootstrapForm">
+<em class="property">class </em><tt class="descclassname">mirskutils.forms.</tt><tt class="descname">BootstrapForm</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#mirskutils.forms.BootstrapForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias for PlaceholderForm as bootstrap 3 <tt class="docutils literal"><span class="pre">styles</span> <span class="pre">form-control</span></tt> with placeholders in mind</p>
+</dd></dl>
+
+</div>
 </div>
 
 
@@ -170,10 +196,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="packages.html" class="btn btn-neutral float-right" title="“Required” Packages"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="wsgi.html" class="btn btn-neutral float-right" title="wsgi application configuration"/>Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="MirskUtils"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="views.html" class="btn btn-neutral" title="mirskutils.views"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   

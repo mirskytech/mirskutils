@@ -28,7 +28,8 @@ Getting Started
     
     installation
     packages
-
+    environment
+    static-files
 
 .. _util-docs:
 
@@ -41,6 +42,7 @@ Utilities
     shortcuts
     sekizai
     views
+    forms
 
 
 .. _best-practices-docs:

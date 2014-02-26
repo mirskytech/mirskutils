@@ -1,0 +1,295 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>static file management &mdash; MirskUtils 0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'./',
+        VERSION:'0.1',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+    <script type="text/javascript">
+        jQuery(function () {
+            SphinxRtdTheme.StickyNav.enable();
+        });
+    </script>
+  
+
+  
+    <link rel="top" title="MirskUtils 0.1 documentation" href="index.html"/>
+        <link rel="next" title="mirskutils.shortcuts" href="shortcuts.html"/>
+        <link rel="prev" title="“Required” Packages" href="packages.html"/> 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="icon icon-home"> MirskUtils</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packages.html">&#8220;Required&#8221; Packages</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="packages.html#packages">Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="packages.html#install-flags">Install Flags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="packages.html#package-recommendations">Package Recommendations</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">static file management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#environment-configuration">environment configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#import-statements">import statements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#css-and-less-sass-and-javascript">css (and less,sass) and javascript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#included-static-file-libraries">included static file libraries</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="shortcuts.html">mirskutils.shortcuts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="shortcuts.html#module-mirskutils.shortcuts">json responses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shortcuts.html#module-mirskutils.shortcuts">json response conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shortcuts.html#module-mirskutils.shortcuts">amazon utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sekizai.html">mirskutils.sekizai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="views.html">mirskutils.views</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="views.html#background">background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="views.html#migration">migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="views.html#migration-lite">migration-lite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="views.html#module-mirskutils.views">authenticated views</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="forms.html">mirskutils.forms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="forms.html#module-mirskutils.forms">forms</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="wsgi.html">wsgi application configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_template.html">project template</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="project_template.html#web-application">web application</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="app_template.html">Application Template</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="app_template.html#section-1">Section 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app_template.html#section-2">Section 2</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="icon icon-reorder"></i>
+        <a href="index.html">MirskUtils</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>static file management</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/static-files.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="static-file-management">
+<span id="id1"></span><h1>static file management<a class="headerlink" href="#static-file-management" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="environment-configuration">
+<h2>environment configuration<a class="headerlink" href="#environment-configuration" title="Permalink to this headline">¶</a></h2>
+<p>By convention, the django project template included in this package uses:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">STATIC_ROOT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">PROJECT_PATH</span><span class="p">,</span> <span class="s">&quot;site_static&quot;</span><span class="p">)</span>
+<span class="n">STATIC_URL</span> <span class="o">=</span> <span class="s">&quot;/static/&quot;</span>
+</pre></div>
+</div>
+<p>During development (ie <cite>DEBUG=True</cite>), the django.static.staticfiles handler
+will find all your various static files. In production, run <tt class="docutils literal"><span class="pre">./manage.py</span> <span class="pre">collectatic</span></tt>
+to gather all the static files.</p>
+</div>
+<div class="section" id="import-statements">
+<h2>import statements<a class="headerlink" href="#import-statements" title="Permalink to this headline">¶</a></h2>
+<p>This setup will also allow you to have import statements, but the paths need to be relative to <cite>static</cite>.</p>
+<p>for example, if your static file is in <tt class="docutils literal"><span class="pre">myapp/static/myapp/mylessfile.less</span></tt>, the import statement would be:</p>
+<div class="highlight-python"><div class="highlight"><pre>@import &quot;/static/script/textarea.css&quot;;
+</pre></div>
+</div>
+</div>
+<div class="section" id="css-and-less-sass-and-javascript">
+<h2>css (and less,sass) and javascript<a class="headerlink" href="#css-and-less-sass-and-javascript" title="Permalink to this headline">¶</a></h2>
+<p>The project template is setup with sekizai tags (a convenient way of
+specifiy your scripts in any page but all of them rendering in one place) and
+compress (preprocessor of files as well as concatenation &amp; minimization). To enable
+the precompilers, uncomment this line towards the bottom of the <cite>settings.py</cite> file:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">COMPRESS_PRECOMPILERS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="s">&#39;text/less&#39;</span><span class="p">,</span> <span class="s">&#39;lessc {infile} {outfile}&#39;</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="included-static-file-libraries">
+<h2>included static file libraries<a class="headerlink" href="#included-static-file-libraries" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>bootstrap (version 2)</li>
+</ul>
+<p>twitter&#8217;s cross platform &amp; device library
+<a class="reference external" href="http://getbootstrap.com/2.3.2/">http://getbootstrap.com/2.3.2/</a></p>
+<ul class="simple">
+<li>bootstrap3</li>
+</ul>
+<p>twitter&#8217;s cross platform &amp; device library
+<a class="reference external" href="http://getbootstrap.com/">http://getbootstrap.com/</a></p>
+<ul class="simple">
+<li>canjs</li>
+</ul>
+<p>javascript mvc framework, forked (formerly known as?) sproutcore
+works with jQuery, Zepto, Dojo, Mootools, YUI
+<a class="reference external" href="http://canjs.com">http://canjs.com</a></p>
+<ul>
+<li><p class="first">emberjs</p>
+</li>
+<li><p class="first">glyphicons</p>
+</li>
+<li><p class="first">html5shiv</p>
+</li>
+<li><dl class="first docutils">
+<dt>jquery</dt>
+<dd><ul class="first last simple">
+<li>anythingslider.css</li>
+<li>imagesloaded.min.js</li>
+<li>jquery.ajaxform.js</li>
+<li>jquery.anythingslider.min.js</li>
+<li>jquery.cookie.js</li>
+<li>jquery.infieldlabel.js</li>
+<li>jquery.placeholder.js</li>
+<li>jquery.qtip.css</li>
+<li>jquery.qtip.js</li>
+<li>jquery.selectboxit.js</li>
+<li>jquery.tooltipster.js</li>
+<li>jquery.tooltipster.min.js</li>
+<li>selectboxit.css</li>
+<li>themes</li>
+<li>tooltipster.css</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">jqueryui</p>
+</li>
+<li><p class="first">reset.css</p>
+</li>
+<li><p class="first">respondjs</p>
+</li>
+<li><p class="first">select2</p>
+</li>
+<li><p class="first">selectize</p>
+</li>
+<li><p class="first">tinymce</p>
+</li>
+<li><p class="first">wijmo</p>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="shortcuts.html" class="btn btn-neutral float-right" title="mirskutils.shortcuts"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="packages.html" class="btn btn-neutral" title="“Required” Packages"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Andrew Mirsky.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>

@@ -1,8 +1,6 @@
 
 
 
-
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -24,7 +22,7 @@
 
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:'',
+        URL_ROOT:'./',
         VERSION:'0.1',
         COLLAPSE_INDEX:false,
         FILE_SUFFIX:'.html',
@@ -89,26 +87,38 @@
 <li class="toctree-l2"><a class="reference internal" href="packages.html#package-recommendations">Package Recommendations</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="static-files.html">static file management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="static-files.html#environment-configuration">environment configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="static-files.html#import-statements">import statements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="static-files.html#css-and-less-sass-and-javascript">css (and less,sass) and javascript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="static-files.html#included-static-file-libraries">included static file libraries</a></li>
+</ul>
+</li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="shortcuts.html">Shortcuts</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="shortcuts.html">mirskutils.shortcuts</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="shortcuts.html#module-mirskutils.shortcuts">json responses</a></li>
 <li class="toctree-l2"><a class="reference internal" href="shortcuts.html#module-mirskutils.shortcuts">json response conventions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="shortcuts.html#module-mirskutils.shortcuts">amazon utilities</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="sekizai.html">Static File Management (css/js)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="sekizai.html#environment-configuration">Environment Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sekizai.html#import-statements">Import Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sekizai.html">mirskutils.sekizai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="views.html">mirskutils.views</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="views.html#background">background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="views.html#migration">migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="views.html#migration-lite">migration-lite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="views.html#module-mirskutils.views">authenticated views</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="views.html">mirskutils.views</a></li>
+<li class="toctree-l1"><a class="reference internal" href="forms.html">mirskutils.forms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="forms.html#module-mirskutils.forms">forms</a></li>
+</ul>
+</li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="wsgi.html">WSGI Application Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="project_template.html">Project Template</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="project_template.html#section-1">Section 1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="project_template.html#section-2">Section 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wsgi.html">wsgi application configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_template.html">project template</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="project_template.html#web-application">web application</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="app_template.html">Application Template</a><ul>
@@ -152,13 +162,36 @@
 <h1 id="index">Index</h1>
 
 <div class="genindex-jumpbox">
- <a href="#D"><strong>D</strong></a>
+ <a href="#B"><strong>B</strong></a>
+ | <a href="#C"><strong>C</strong></a>
+ | <a href="#D"><strong>D</strong></a>
  | <a href="#J"><strong>J</strong></a>
  | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
+ | <a href="#P"><strong>P</strong></a>
  | <a href="#S"><strong>S</strong></a>
  
 </div>
+<h2 id="B">B</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="forms.html#mirskutils.forms.BootstrapForm">BootstrapForm (class in mirskutils.forms)</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="C">C</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="sekizai.html#mirskutils.sekizai.compress">compress() (in module mirskutils.sekizai)</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
 <h2 id="D">D</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
@@ -207,13 +240,31 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="shortcuts.html#module-mirskutils.shortcuts">mirskutils.shortcuts (module)</a>, <a href="shortcuts.html#module-mirskutils.shortcuts">[1]</a>, <a href="shortcuts.html#module-mirskutils.shortcuts">[2]</a>
+  <dt><a href="forms.html#module-mirskutils.forms">mirskutils.forms (module)</a>
+  </dt>
+
+      
+  <dt><a href="sekizai.html#module-mirskutils.sekizai">mirskutils.sekizai (module)</a>
   </dt>
 
   </dl></td>
   <td style="width: 33%" valign="top"><dl>
       
+  <dt><a href="shortcuts.html#module-mirskutils.shortcuts">mirskutils.shortcuts (module)</a>, <a href="shortcuts.html#module-mirskutils.shortcuts">[1]</a>, <a href="shortcuts.html#module-mirskutils.shortcuts">[2]</a>
+  </dt>
+
+      
   <dt><a href="views.html#module-mirskutils.views">mirskutils.views (module)</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="P">P</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="forms.html#mirskutils.forms.PlaceholderForm">PlaceholderForm (class in mirskutils.forms)</a>
   </dt>
 
   </dl></td>

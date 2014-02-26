@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -8,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Project Template &mdash; MirskUtils 0.1 documentation</title>
+  <title>project template &mdash; MirskUtils 0.1 documentation</title>
   
 
   
@@ -22,7 +21,7 @@
 
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:'',
+        URL_ROOT:'./',
         VERSION:'0.1',
         COLLAPSE_INDEX:false,
         FILE_SUFFIX:'.html',
@@ -55,7 +54,7 @@
   
     <link rel="top" title="MirskUtils 0.1 documentation" href="index.html"/>
         <link rel="next" title="Application Template" href="app_template.html"/>
-        <link rel="prev" title="WSGI Application Configuration" href="wsgi.html"/> 
+        <link rel="prev" title="wsgi application configuration" href="wsgi.html"/> 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
 
@@ -89,26 +88,33 @@
 <li class="toctree-l2"><a class="reference internal" href="packages.html#package-recommendations">Package Recommendations</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="static-files.html">static file management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="static-files.html#environment-configuration">environment configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="static-files.html#import-statements">import statements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="static-files.html#css-and-less-sass-and-javascript">css (and less,sass) and javascript</a></li>
+</ul>
+</li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="shortcuts.html">Shortcuts</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="shortcuts.html">mirskutils.shortcuts</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="shortcuts.html#module-mirskutils.shortcuts">json responses</a></li>
 <li class="toctree-l2"><a class="reference internal" href="shortcuts.html#module-mirskutils.shortcuts">json response conventions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="shortcuts.html#module-mirskutils.shortcuts">amazon utilities</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="sekizai.html">Static File Management (css/js)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="sekizai.html#environment-configuration">Environment Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sekizai.html#import-statements">Import Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sekizai.html">mirskutils.sekizai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="views.html">mirskutils.views</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="views.html#background">background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="views.html#migration">migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="views.html#migration-lite">migration-lite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="views.html#module-mirskutils.views">authenticated views</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="views.html">mirskutils.views</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="wsgi.html">WSGI Application Configuration</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Project Template</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#section-1">Section 1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#section-2">Section 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wsgi.html">wsgi application configuration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">project template</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#web-application">web application</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="app_template.html">Application Template</a><ul>
@@ -139,7 +145,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>Project Template</li>
+    <li>project template</li>
       <li class="wy-breadcrumbs-aside">
         
           <a href="_sources/project_template.txt" rel="nofollow"> View page source</a>
@@ -151,14 +157,54 @@
           <div role="main">
             
   <div class="section" id="project-template">
-<h1>Project Template<a class="headerlink" href="#project-template" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="section-1">
-<h2>Section 1<a class="headerlink" href="#section-1" title="Permalink to this headline">¶</a></h2>
-<p>or this</p>
+<h1>project template<a class="headerlink" href="#project-template" title="Permalink to this headline">¶</a></h1>
+<p>a quick way of creating a new project with the most common elements already existing:</p>
+<div class="highlight-python"><div class="highlight"><pre>project/
+    manage.py  # django project management
+    wsgi.py    # web application entry point
+    conf/      # sample configuration files for the project
+    docs/      # initial sphinx documentation setup
+    mobileapp/ # location (currently empty) for the project&#39;s mobile app
+    webapp/    # django project struction
+</pre></div>
 </div>
-<div class="section" id="section-2">
-<h2>Section 2<a class="headerlink" href="#section-2" title="Permalink to this headline">¶</a></h2>
-<p>Something like this</p>
+<div class="section" id="web-application">
+<h2>web application<a class="headerlink" href="#web-application" title="Permalink to this headline">¶</a></h2>
+<p>The django portion &#8211; under <cite>webapp/</cite> &#8211; includes this structure and elements:</p>
+<div class="highlight-python"><div class="highlight"><pre>webapp/
+    api.py                      # location for any api instantiations
+    basic_init.sample.json      # example of a fixture
+    core/                       # core applications of this project
+        fhfh
+    registration/               # urls, configuration and templates for django.contrib.auth
+    routers.py                  #
+    settings.py
+    static
+    templates
+    urls.py
+    wingstub.py
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>api.py:</dt>
+<dd>location for any api singleton instantiations</dd>
+<dt>basic_init.sample.json:</dt>
+<dd>example of a django fixture for loading data</dd>
+<dt>core:</dt>
+<dd>location for the core applications of this project</dd>
+<dt>routers.py:</dt>
+<dd>a utility to direct all models of a certain type to a specified database</dd>
+<dt>settings.py:</dt>
+<dd>basic configuration</dd>
+<dt>static:</dt>
+<dd>project-wide static files</dd>
+<dt>templates:</dt>
+<dd>base, 404, 500 and 403 templates</dd>
+<dt>urls.py:</dt>
+<dd>master url file with examples</dd>
+<dt>wingstub.py:</dt>
+<dd>utility to connect to WingIDE&#8217;s remote debugging</dd>
+</dl>
 </div>
 </div>
 
@@ -171,7 +217,7 @@
         <a href="app_template.html" class="btn btn-neutral float-right" title="Application Template"/>Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="wsgi.html" class="btn btn-neutral" title="WSGI Application Configuration"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="wsgi.html" class="btn btn-neutral" title="wsgi application configuration"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
