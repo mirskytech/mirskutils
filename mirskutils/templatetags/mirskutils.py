@@ -14,6 +14,9 @@ register = template.Library()
 
 @register.simple_tag
 def urlOptions(viewname, *args, **kwargs):
+    """
+    
+    """
     params = [ a for a in args if a ]
     kwparams = { k:v for k,v in kwargs.iteritems() if v }
     return reverse(viewname, args=params, kwargs=kwparams)

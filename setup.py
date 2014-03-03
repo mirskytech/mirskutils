@@ -81,7 +81,7 @@ links = [
 
 # force lxml to download and compile libxml and libxslt
 # ( primarily for Mac OS X)
-os.environ['STATIC_DEPS'] = 'true'
+os.environ['STATICBUILD'] = 'true'
 
 setup(name='MirskUtils',
       version=verstr,
