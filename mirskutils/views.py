@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.conf import settings
 from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponse
+from django.contrib import messages
 
 from django.core.exceptions import PermissionDenied
 from decorators import method_decorator
@@ -29,13 +30,17 @@ class LoginRequiredView(View):
     redirect_403 = reverse_lazy('forbidden403')
     check_active = True
     redirect_active = settings.LOGIN_URL # not used when check_active is false
+    login_required_message = "Login Required."
         
     def dispatch(self, request, *args, **kwargs):
         """
         overrides the default display method in order to check authentication
         """
         
+        # TODO : include ?next=
         if not request.user.is_authenticated():
+            if self.login_required_message:
+                messages.info(request, self.login_required_message)
             return redirect(self.redirect_401)
         
         if not request.user.is_active and self.check_active:
