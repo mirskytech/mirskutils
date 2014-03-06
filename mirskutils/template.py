@@ -4,6 +4,10 @@ from django.template.base import TagHelperNode, parse_bits
 
 class Library(DjangoTemplateLibrary):
 
+    #https://djangosnippets.org/snippets/1701/
+    
+    
+    
     def withas_tag(self, func=None, takes_context=None, name=None):
         def dec(func):
             params, varargs, varkw, defaults = getargspec(func)
