@@ -21,9 +21,6 @@ to a user without giving the capability of mucking with the site's style and lay
 - a collection, in a ranked order, of other contentblocks
 
 
-
-
-
 .. [1] https://www.djangopackages.com/grids/g/cms/
 .. [2] https://code.djangoproject.com/wiki/CMSAppsComparison
 
