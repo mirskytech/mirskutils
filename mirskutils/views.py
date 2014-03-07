@@ -11,6 +11,7 @@ from django.core.exceptions import PermissionDenied
 from decorators import method_decorator
 
 
+
 class LoginRequiredView(View):
     """Subclass of django.views.generic.View which handles authentication
     replaces the use of @method_decorator in urls.py (for class-based views) or 
