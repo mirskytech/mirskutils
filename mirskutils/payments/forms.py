@@ -15,7 +15,6 @@ class BillingAddressForm(BootstrapForm):
     country = CountryField(label="Country", initial="US")
     zip = USZipCodeField(label="Postal / Zip Code")
     
-    
     def as_stripe(self):
         return { 
             "name": "%s %s" % (self.cleaned_data['first_name'], self.cleaned_data['last_name']),
@@ -36,6 +35,13 @@ class PaymentForm(BootstrapForm):
     card_number = CreditCardField(label="Credit Card Number")
     expiration_date = CreditCardExpiryField(label="Expiration Date")
     card_code = CreditCardCVV2Field(label="Card Security Code")
+    
+    def __init__(self, *args, **kwargs):
+        super(PaymentForm, self).__init__(*args, **kwargs)
+        
+    def clear_cc_fields(self):
+        self.data['card_number'] = ''
+        self.data['card_code'] = ''
     
     def as_stripe(self):
         return {
