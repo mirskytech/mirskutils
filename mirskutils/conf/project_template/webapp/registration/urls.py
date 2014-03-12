@@ -3,7 +3,7 @@ from django.views.generic import TemplateView, RedirectView
 from django.core.urlresolvers import reverse_lazy
 
 from mirskutils.registration.forms import *
-
+from .forms import AccountForm
 from .views import Signup, Account
 
 urlpatterns = patterns('',
@@ -64,5 +64,5 @@ urlpatterns = patterns('',
                                'extra_context':{'account_form':AccountForm()}
                            },
                            name='password-change'),                       
-                       ),
+                       )
 

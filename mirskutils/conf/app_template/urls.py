@@ -2,6 +2,8 @@ from django.conf.urls import patterns, include, url
 from django.views.generic import TemplateView, RedirectView
 from django.core.urlresolvers import reverse_lazy
 
+from .views import *
+from .resources import *
 
 urlpatterns = patterns('',
     # Examples:
