@@ -1,0 +1,45 @@
+*.py[cod]
+local_settings.py
+uwsgi.xml
+uwsgi.ini
+basic_init.json
+secret.txt
+*/media/*
+*/site_static/*
+logfile
+logfile.*
+*.orig
+.DS_Store
+# C extensions
+*.so
+media/*
+
+# Packages
+*.egg
+*.egg-info
+#dist
+build
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
+lib64
+
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.tox
+nosetests.xml
+
+# Translations
+*.mo
+
+# Mr Developer
+.mr.developer.cfg
+.project
+.pydevproject

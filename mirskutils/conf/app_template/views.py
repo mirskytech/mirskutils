@@ -24,7 +24,7 @@ class Home(View):
 
     """    
     
-    def(self, request):
+    def get(self, request):
         """respond to ajax request by rendering template
     
     
