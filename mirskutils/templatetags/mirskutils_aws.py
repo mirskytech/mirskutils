@@ -1,9 +1,12 @@
 import boto
 import time
 from django.conf import settings
+from django import template
+from django.template.defaultfilters import stringfilter
 
-from mirskutils.shortcuts import sign_s3_url
+from ..shortcuts import sign_s3_url
 
+register = template.Library()
 
 @register.filter
 @stringfilter
