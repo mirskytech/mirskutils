@@ -45,7 +45,7 @@ dependencies = [
     'requests',
     'django-sekizai',
     'sphinxcontrib-fancybox',
-    'couchdb >= 0.9.1beta',
+    #'couchdb >= 0.9.1beta',
     'cython',
 
     'lxml',
@@ -73,15 +73,17 @@ else:
 
 
 
-
-links = [
-    'https://github.com/ajmirsky/couchdb-python/tarball/master#egg=couchdb-0.9.1beta',
-    'https://github.com/surfly/gevent/tarball/1.0rc3#egg=gevent-1.0dev',
-]
+# dependency links deprecated in pip 1.5 and removed in pip 1.6
+# links = [
+#    'https://github.com/ajmirsky/couchdb-python/tarball/master#egg=couchdb-0.9.1beta',
+#    'https://github.com/surfly/gevent/tarball/1.0rc3#egg=gevent-1.0dev',
+# ]
 
 # force lxml to download and compile libxml and libxslt
 # ( primarily for Mac OS X)
-os.environ['STATICBUILD'] = 'true'
+os.environ['STATICBUILD'] = 'TRUE'
+os.environ['STATIC_DEPS'] = 'TRUE'
+os.environ['ARCHFLAGS'] = '-Wno-error=unused-command-line-argument-hard-error-in-future'
 
 setup(name='MirskUtils',
       version=verstr,
