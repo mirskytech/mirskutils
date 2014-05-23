@@ -1,7 +1,11 @@
 import os
 import logging
 
-from PIL import Image, ImageOps, ImageFile, ImageFilter
+try:
+    from PIL import Image, ImageOps, ImageFile, ImageFilter
+except ImportError:
+    pass
+
 from StringIO import StringIO
 #from cStringIO import StringIO as cStringIO
 from django.conf import settings

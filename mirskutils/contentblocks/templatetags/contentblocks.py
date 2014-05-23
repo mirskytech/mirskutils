@@ -2,7 +2,6 @@ from mirskutils import template
 from django.shortcuts import get_object_or_404
 from django.http import Http404
 from django.db.models import ObjectDoesNotExist
-from accelerator.models import ContentBlock
 from django.utils.safestring import mark_safe
 
 register = template.Library()
