@@ -21,30 +21,25 @@ dependencies = [
     'Django',
     'jsonfield',
     'South',
-    'Sphinx',
     'django-compressor',
     'django-sekizai',
-    'django-bootstrap-form',
-    'django-admin-bootstrapped',
 ]
 
 
 # dependency links deprecated in pip 1.5 and removed in pip 1.6
-
 links = []
 
 
-setup(name='MirskUtils',
+setup(name='mirskutils',
       version=verstr,
       description='Mirsky Utility Functions',
       author='Andrew',
       author_email='andrew@mirsky.net',
       scripts=['bin/mirskutils-admin.py'],
-      url='http://andrew.mirsky.com/',
+      url='http://mirskytech.github.io/mirskutils/',
       packages=find_packages(),
       include_package_data=True,
       install_requires=dependencies,
-      dependency_links = links,
      )
 
 
