@@ -1,0 +1,13 @@
+{# Import the theme's layout. #}
+{% extends "!layout.html" %}
+
+{# Include our new CSS file into existing ones. #}
+{% set css_files = css_files + ['_static/darkstrap.css']%}
+
+{% block extrahead %}
+
+    <link rel="stylesheet" href="{{ pathto('_static/darkstrap.css',1) }}" type="text/css" />
+    <link rel="stylesheet" href="{{ pathto('_static/sportscrunch-docs.css',1) }}" type="text/css" />
+
+
+{% endblock %}

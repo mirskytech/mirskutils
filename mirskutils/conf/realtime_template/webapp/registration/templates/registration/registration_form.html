@@ -1,0 +1,23 @@
+{% extends "registration/registration_base.html" %}
+{% block title %}| Create Account{% endblock %}
+
+
+{% block content %}
+<span class="registration">
+<div class="content-container-c">
+	<div><h1>Create Account</h1></div>
+	<form method='post' action='{% url register %}'>
+		{{ form.non_field_errors }}
+		{% csrf_token %}
+		{% for field in form %}
+		<p>{{ field.label_tag }} {{ field }}{% if field.errors %}<span class="error">{{ field.errors.as_text }}</span>{% endif %}</p>
+		{% endfor %}
+		<input type="submit" value="DO IT" class="fbutton" />
+	</form>
+</div>
+</span>
+
+
+
+
+{% endblock %}

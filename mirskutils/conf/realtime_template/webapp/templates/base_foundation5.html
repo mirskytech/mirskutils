@@ -1,0 +1,61 @@
+{% load mirskutils mirskutils_img sekizai_tags %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
+
+  <title>foundation5 &amp; select2</title>
+
+  {% addtoblock 'css' %}
+    {% less 'lib/glyphicons/less/glyphicons.less' %}
+    {% css  'lib/foundation5/css/normalize.css' %}
+    {% css  'lib/foundation5/css/foundation.css' %}
+
+    {% less 'css/base_foundation5.less' %}
+  {% endaddtoblock %}
+
+  {% render_block 'css' postprocessor 'mirskutils.sekizai.compress' %}
+
+  <!--[if lt IE 9]>
+    <script src="{{ STATIC_URL }}lib/html5shiv/html5shiv.js"></script>
+    <script src="{{ STATIC_URL }}lib/respondjs/respond.min.js"></script>
+  <![endif]-->
+
+  {% addtoblock 'js' %}
+    {% js 'lib/foundation5/js/vendor/modernizr.js' %}
+    {% js 'lib/foundation5/js/vendor/jquery.js' %}
+    {% js 'lib/foundation5/js/foundation.min.js' %}
+    {% js 'lib/jquery/plugins/jquery.cookie.js' %}
+    {% js 'js/csrf.js' %}
+    <script>$(function() {
+      $(document).foundation();
+    });
+    </script>
+  {% endaddtoblock %}
+
+  </head>
+
+
+  <body>
+    <div class="wrapper">
+      <nav class="top-bar" data-topbar>
+        {% include 'topnav_foundation5.html' %}
+      </nav>
+  
+      <p>Your website content here.</p>
+      <p style="font-size:50px"><span class="glyphicons keys"></span></p>
+      <div class="push"></div>
+    </div>
+    <div class="footer">
+      <p>Sticky Footer</p>
+    </div>
+
+  {% render_block 'js' postprocessor 'mirskutils.sekizai.compress' %}
+
+  </body>
+</html>

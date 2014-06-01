@@ -1,0 +1,10 @@
+.registration form p { 
+	position:relative;
+}
+
+.registration label { 
+	position:absolute;
+    	top: 0px;
+    	left: 0px;	
+}
+

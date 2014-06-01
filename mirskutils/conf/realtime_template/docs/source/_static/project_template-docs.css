@@ -1,0 +1,16 @@
+#navbar {
+position: fixed;
+right: 0;
+left: 0;
+z-index: 1030;
+margin-bottom: 0;
+top: 0;
+}
+
+.body {
+    padding-top:50px;
+}
+
+.admonition code {
+    color: #333;
+}

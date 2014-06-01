@@ -1,0 +1,14 @@
+.DS_Store
+*.pyc
+local_settings.py
+*.log
+uwsgi.xml
+*/media/*
+!media/reports
+!media/reports/*
+*/site_static/*
+log
+*BACKUP*
+*.orig
+*.pem
+secret.txt

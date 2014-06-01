@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load mirskutils sekizai_tags bootstrap %}
+
+{% block page_contents %}
+
+
+  {% addtoblock 'css' %}
+    {% less 'account/account.less' %}
+  {% endaddtoblock %}
+  
+  {% addtoblock 'js' %}
+  
+  {% endaddtoblock %}
+
+
+  <div class="col-xs-4"></div>
+  <div class="col-xs-4 account-info">
+    <h4>Account Information</h4>
+	<form method="POST" action="{% url 'account:account' %}">
+	  {% csrf_token %}
+	  {{ account_form|bootstrap }}
+	  <button class="btn btn-default" type="submit">update</button>
+	</form>
+	<h4>Change Password</h4>
+	<form method="POST" action="{% url 'account:password' %}">
+	  {% csrf_token %}
+	  {{ password_form|bootstrap }}
+	  <button class="btn btn-default" type="submit">change</button>
+	</form>
+  </div>
+  <div class="col-xs-4"></div>
+  
+
+
+
+
+{% endblock page_contents %}

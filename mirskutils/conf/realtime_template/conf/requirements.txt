@@ -1,0 +1,10 @@
+Django
+jsonfield
+South
+django-compressor
+django-sekizai
+django-bootstrap-form
+django-admin-bootstrapped
+psycopg2
+gevent>=1.0.1
+uwsgi>=1.9
