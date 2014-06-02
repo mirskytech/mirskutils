@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>project template &mdash; MirskUtils 0.1 documentation</title>
+  <title>project templates &mdash; MirskUtils 0.1 documentation</title>
   
 
   
@@ -92,6 +92,7 @@
 <li class="toctree-l2"><a class="reference internal" href="static-files.html#environment-configuration">environment configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="static-files.html#import-statements">import statements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="static-files.html#css-and-less-sass-and-javascript">css (and less,sass) and javascript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="static-files.html#included-static-file-libraries">included static file libraries</a></li>
 </ul>
 </li>
 </ul>
@@ -110,11 +111,20 @@
 <li class="toctree-l2"><a class="reference internal" href="views.html#module-mirskutils.views">authenticated views</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="forms.html">mirskutils.forms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="forms.html#module-mirskutils.forms">forms</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contentblocks.html">mirskutils.contentblocks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contentblocks.html#module-mirskutils.contentblocks.models">Content Block Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contentblocks.html#module-mirskutils.contentblocks.templatetags.contentblocks">Template Tags</a></li>
+</ul>
+</li>
 </ul>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="wsgi.html">wsgi application configuration</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">project template</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#web-application">web application</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">project templates</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#django-project">django project</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="app_template.html">Application Template</a><ul>
@@ -122,6 +132,7 @@
 <li class="toctree-l2"><a class="reference internal" href="app_template.html#section-2">Section 2</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="urls.html">url patterns</a></li>
 </ul>
 
         
@@ -145,7 +156,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>project template</li>
+    <li>project templates</li>
       <li class="wy-breadcrumbs-aside">
         
           <a href="_sources/project_template.txt" rel="nofollow"> View page source</a>
@@ -156,9 +167,15 @@
 </div>
           <div role="main">
             
-  <div class="section" id="project-template">
-<h1>project template<a class="headerlink" href="#project-template" title="Permalink to this headline">¶</a></h1>
-<p>a quick way of creating a new project with the most common elements already existing:</p>
+  <div class="section" id="project-templates">
+<h1>project templates<a class="headerlink" href="#project-templates" title="Permalink to this headline">¶</a></h1>
+<p>Once <tt class="docutils literal"><span class="pre">mirskutils</span></tt> is installed in your python environment, the template that is used
+for <tt class="docutils literal"><span class="pre">django-admin.py</span> <span class="pre">startproject</span> <span class="pre">MyProject</span></tt> is the <a href="#id1"><span class="problematic" id="id2">:refs:`standardprojectemplate`</span></a>.</p>
+<p>If you&#8217;d like to use the alternative starter project templates, use the <tt class="docutils literal"><span class="pre">--template</span></tt> flag added as of Django 1.5.</p>
+<p>Each project comes with one or more <tt class="docutils literal"><span class="pre">requirements.txt</span></tt> file depending on which packages you might need.</p>
+<div class="section" id="django-project">
+<h2>django project<a class="headerlink" href="#django-project" title="Permalink to this headline">¶</a></h2>
+<p>a quick way of creating a new project with the most commonly used elements:</p>
 <div class="highlight-python"><div class="highlight"><pre>project/
     manage.py  # django project management
     wsgi.py    # web application entry point
@@ -168,14 +185,19 @@
     webapp/    # django project struction
 </pre></div>
 </div>
-<div class="section" id="web-application">
-<h2>web application<a class="headerlink" href="#web-application" title="Permalink to this headline">¶</a></h2>
+<p>..standardprojectemplate</p>
+<div class="section" id="standard-request-response-project">
+<h3>standard request-response project<a class="headerlink" href="#standard-request-response-project" title="Permalink to this headline">¶</a></h3>
+<p>to use:</p>
+<div class="highlight-python"><div class="highlight"><pre>&gt;&gt; django-admin.py startproject MyProjectName
+</pre></div>
+</div>
 <p>The django portion &#8211; under <cite>webapp/</cite> &#8211; includes this structure and elements:</p>
 <div class="highlight-python"><div class="highlight"><pre>webapp/
     api.py                      # location for any api instantiations
     basic_init.sample.json      # example of a fixture
     core/                       # core applications of this project
-        fhfh
+        &lt;your app here&gt;
     registration/               # urls, configuration and templates for django.contrib.auth
     routers.py                  #
     settings.py
@@ -205,6 +227,23 @@
 <dt>wingstub.py:</dt>
 <dd>utility to connect to WingIDE&#8217;s remote debugging</dd>
 </dl>
+</div>
+<div class="section" id="realtime-project">
+<h3>realtime project<a class="headerlink" href="#realtime-project" title="Permalink to this headline">¶</a></h3>
+<p>this project includes the <a href="#id3"><span class="problematic" id="id4">:refs:`standardprojectemplate`</span></a> plus the necessary application configuration, requirements file
+and examples for django to create long-running connections with a user&#8217;s browsers:</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre>&gt;&gt; django-admin.py startproject --template=lib/python2.7/site-packagse/conf/realtime_project MyProjectName
+</pre></div>
+</div>
+</div></blockquote>
+<p>or</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre>&gt;&gt; django-admin.py startproject --template=lib/python2.7/site-packages/conf/jsmvc_project MyProjectName
+</pre></div>
+</div>
+</div></blockquote>
+</div>
 </div>
 </div>
 

@@ -1,0 +1,307 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mirskutils.contentblocks &mdash; MirskUtils 0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'./',
+        VERSION:'0.1',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+    <script type="text/javascript">
+        jQuery(function () {
+            SphinxRtdTheme.StickyNav.enable();
+        });
+    </script>
+  
+
+  
+    <link rel="top" title="MirskUtils 0.1 documentation" href="index.html"/>
+        <link rel="next" title="wsgi application configuration" href="wsgi.html"/>
+        <link rel="prev" title="mirskutils.forms" href="forms.html"/> 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="icon icon-home"> MirskUtils</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packages.html">&#8220;Required&#8221; Packages</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="packages.html#packages">Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="packages.html#install-flags">Install Flags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="packages.html#package-recommendations">Package Recommendations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="static-files.html">static file management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="static-files.html#environment-configuration">environment configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="static-files.html#import-statements">import statements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="static-files.html#css-and-less-sass-and-javascript">css (and less,sass) and javascript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="static-files.html#included-static-file-libraries">included static file libraries</a></li>
+</ul>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="shortcuts.html">mirskutils.shortcuts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="shortcuts.html#module-mirskutils.shortcuts">json responses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shortcuts.html#module-mirskutils.shortcuts">json response conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shortcuts.html#module-mirskutils.shortcuts">amazon utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sekizai.html">mirskutils.sekizai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="views.html">mirskutils.views</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="views.html#background">background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="views.html#migration">migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="views.html#migration-lite">migration-lite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="views.html#module-mirskutils.views">authenticated views</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="forms.html">mirskutils.forms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="forms.html#module-mirskutils.forms">forms</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">mirskutils.contentblocks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-mirskutils.contentblocks.models">Content Block Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-mirskutils.contentblocks.templatetags.contentblocks">Template Tags</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="wsgi.html">wsgi application configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_template.html">project templates</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="project_template.html#django-project">django project</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="app_template.html">Application Template</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="app_template.html#section-1">Section 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app_template.html#section-2">Section 2</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="urls.html">url patterns</a></li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="icon icon-reorder"></i>
+        <a href="index.html">MirskUtils</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>mirskutils.contentblocks</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/contentblocks.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="mirskutils-contentblocks">
+<h1>mirskutils.contentblocks<a class="headerlink" href="#mirskutils-contentblocks" title="Permalink to this headline">¶</a></h1>
+<p>There are numerous django-based content management systems[1]_[2]_ available, providing
+full-fledged applications that stack up well against others in the industry drupal,
+wordpress, etc. However, often times a developer only needs to a developer only needs
+to enable an administrator to edit sections or snippets of content that are embedded
+throughout the web application. In this case, the existing CMSs are cumbersome and
+often assume that the application is based around them and not as a component to another
+web application.</p>
+<p>ContentBlocks are intended to be a simple way of providing &#8220;static&#8221; editing capabilities
+to a user without giving the capability of mucking with the site&#8217;s style and layout.</p>
+<ul class="simple">
+<li>one or more paragraphs of text (limited styles to bold, italic, underline, lists)</li>
+<li>playlist of videos</li>
+<li>a series of images</li>
+<li>a collection, in a ranked order, of other contentblocks</li>
+</ul>
+<table class="docutils footnote" frame="void" id="id1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><a class="reference external" href="https://www.djangopackages.com/grids/g/cms/">https://www.djangopackages.com/grids/g/cms/</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[2]</td><td><a class="reference external" href="https://code.djangoproject.com/wiki/CMSAppsComparison">https://code.djangoproject.com/wiki/CMSAppsComparison</a></td></tr>
+</tbody>
+</table>
+<div class="section" id="module-mirskutils.contentblocks.models">
+<span id="content-block-model"></span><h2>Content Block Model<a class="headerlink" href="#module-mirskutils.contentblocks.models" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mirskutils.contentblocks.models.ContentBlock">
+<em class="property">class </em><tt class="descclassname">mirskutils.contentblocks.models.</tt><tt class="descname">ContentBlock</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#mirskutils.contentblocks.models.ContentBlock" title="Permalink to this definition">¶</a></dt>
+<dd><p>ContentBlock(id, title, slug, kind, category, content)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-mirskutils.contentblocks.templatetags.contentblocks">
+<span id="template-tags"></span><h2>Template Tags<a class="headerlink" href="#module-mirskutils.contentblocks.templatetags.contentblocks" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mirskutils.contentblocks.templatetags.contentblocks.contentblock_exists">
+<tt class="descclassname">mirskutils.contentblocks.templatetags.contentblocks.</tt><tt class="descname">contentblock_exists</tt><big>(</big><em>slug</em>, <em>category=None</em><big>)</big><a class="headerlink" href="#mirskutils.contentblocks.templatetags.contentblocks.contentblock_exists" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Check to see if a ContentBlock exists and if it contains any content</dd>
+<dt>Arugment(s):</dt>
+<dd><ul class="first last simple">
+<li>** slug  ** (required) : the unique identifier for the block</li>
+<li>** category ** : taxonomy to organize blocks</li>
+</ul>
+</dd>
+</dl>
+<p>Usage:</p>
+<div class="highlight-python"><div class="highlight"><pre>{% contentblock_exists &#39;contact-us&#39; &#39;public&#39; as ctnt_exists %}
+{% if ctnt_exists %}{% endif %}
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="mirskutils.contentblocks.templatetags.contentblocks.contentblock_as_divs">
+<tt class="descclassname">mirskutils.contentblocks.templatetags.contentblocks.</tt><tt class="descname">contentblock_as_divs</tt><big>(</big><em>slug</em>, <em>category=None</em><big>)</big><a class="headerlink" href="#mirskutils.contentblocks.templatetags.contentblocks.contentblock_as_divs" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Render a ContentBlock wrapped in a <tt class="docutils literal"><span class="pre">&lt;div&gt;</span></tt> tag. For container blocks,
+each of its children are wrapped in a <tt class="docutils literal"><span class="pre">div</span></tt></dd>
+<dt>Arugment(s):</dt>
+<dd><ul class="first last simple">
+<li>** slug  ** (required) : the unique identifier for the block</li>
+<li>** category ** : taxonomy to organize blocks</li>
+</ul>
+</dd>
+</dl>
+<p>Usage:</p>
+<div class="highlight-python"><div class="highlight"><pre>{% contentblock_as_divs &#39;landing-&#39;|add:group &#39;content&#39; &#39;public&#39; %}
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="mirskutils.contentblocks.templatetags.contentblocks.contentblock">
+<tt class="descclassname">mirskutils.contentblocks.templatetags.contentblocks.</tt><tt class="descname">contentblock</tt><big>(</big><em>slug</em>, <em>field=None</em>, <em>category=None</em><big>)</big><a class="headerlink" href="#mirskutils.contentblocks.templatetags.contentblocks.contentblock" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Access a ContentBlock directly without rendering its contents</dd>
+<dt>Arugment(s):</dt>
+<dd><ul class="first last simple">
+<li>** slug  ** (required) : the unique identifier for the block</li>
+<li>** field ** : if specified, attribute provided</li>
+<li>** category ** : taxonomy to organize blocks</li>
+</ul>
+</dd>
+</dl>
+<p>Usage:</p>
+<div class="highlight-python"><div class="highlight"><pre>{% contentblock &#39;contact-us&#39; &#39;content&#39; &#39;public&#39; as ctnt %}
+{{ ctnt.text }}
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="wsgi.html" class="btn btn-neutral float-right" title="wsgi application configuration"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="forms.html" class="btn btn-neutral" title="mirskutils.forms"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Andrew Mirsky.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+</body>
+</html>

@@ -53,7 +53,7 @@
 
   
     <link rel="top" title="MirskUtils 0.1 documentation" href="index.html"/>
-        <link rel="next" title="wsgi application configuration" href="wsgi.html"/>
+        <link rel="next" title="mirskutils.contentblocks" href="contentblocks.html"/>
         <link rel="prev" title="mirskutils.views" href="views.html"/> 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -92,6 +92,7 @@
 <li class="toctree-l2"><a class="reference internal" href="static-files.html#environment-configuration">environment configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="static-files.html#import-statements">import statements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="static-files.html#css-and-less-sass-and-javascript">css (and less,sass) and javascript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="static-files.html#included-static-file-libraries">included static file libraries</a></li>
 </ul>
 </li>
 </ul>
@@ -114,11 +115,16 @@
 <li class="toctree-l2"><a class="reference internal" href="#module-mirskutils.forms">forms</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="contentblocks.html">mirskutils.contentblocks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contentblocks.html#module-mirskutils.contentblocks.models">Content Block Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contentblocks.html#module-mirskutils.contentblocks.templatetags.contentblocks">Template Tags</a></li>
+</ul>
+</li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="wsgi.html">wsgi application configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="project_template.html">project template</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="project_template.html#web-application">web application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_template.html">project templates</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="project_template.html#django-project">django project</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="app_template.html">Application Template</a><ul>
@@ -126,6 +132,7 @@
 <li class="toctree-l2"><a class="reference internal" href="app_template.html#section-2">Section 2</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="urls.html">url patterns</a></li>
 </ul>
 
         
@@ -196,7 +203,7 @@ include it by default. extending from this form, widgets will take their
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="wsgi.html" class="btn btn-neutral float-right" title="wsgi application configuration"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="contentblocks.html" class="btn btn-neutral float-right" title="mirskutils.contentblocks"/>Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="views.html" class="btn btn-neutral" title="mirskutils.views"><span class="icon icon-circle-arrow-left"></span> Previous</a>

@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Search &mdash; MirskUtils 0.1 documentation</title>
+  <title>url patterns &mdash; MirskUtils 0.1 documentation</title>
   
 
   
@@ -31,7 +31,6 @@
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="_static/searchtools.js"></script>
 
     
 
@@ -54,13 +53,7 @@
 
   
     <link rel="top" title="MirskUtils 0.1 documentation" href="index.html"/>
-  <script type="text/javascript">
-    jQuery(function() { Search.loadIndex("searchindex.js"); });
-  </script>
-  
-  <script type="text/javascript" id="searchindexloader"></script>
-   
-
+        <link rel="prev" title="Application Template" href="app_template.html"/> 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
 
@@ -75,7 +68,7 @@
       <div class="wy-side-nav-search">
         <a href="index.html" class="icon icon-home"> MirskUtils</a>
         <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="#" method="get">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -127,7 +120,7 @@
 </ul>
 </li>
 </ul>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="wsgi.html">wsgi application configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="project_template.html">project templates</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="project_template.html#django-project">django project</a></li>
@@ -138,7 +131,7 @@
 <li class="toctree-l2"><a class="reference internal" href="app_template.html#section-2">Section 2</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="urls.html">url patterns</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">url patterns</a></li>
 </ul>
 
         
@@ -162,8 +155,10 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li></li>
+    <li>url patterns</li>
       <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/urls.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -171,22 +166,63 @@
 </div>
           <div role="main">
             
-  <noscript>
-  <div id="fallback" class="admonition warning">
-    <p class="last">
-      Please activate JavaScript to enable the search
-      functionality.
-    </p>
-  </div>
-  </noscript>
+  <div class="section" id="url-patterns">
+<h1>url patterns<a class="headerlink" href="#url-patterns" title="Permalink to this headline">¶</a></h1>
+<p>there are cases when certain views take optional parameters. often times these are
+provided within the <tt class="docutils literal"><span class="pre">url</span></tt> generator funtion. for example, when using django&#8217;s
+authentication login view:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>def login(request, template_name=&#8217;registration/login.html&#8217;,</dt>
+<dd>redirect_field_name=REDIRECT_FIELD_NAME,
+authentication_form=AuthenticationForm,
+current_app=None, extra_context=None):</dd>
+</dl>
+</div></blockquote>
+<p>the <tt class="docutils literal"><span class="pre">url</span></tt> generator function looks like this:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>url(r&#8217;^login/$&#8217;,</dt>
+<dd><p class="first">&#8216;django.contrib.auth.views.login&#8217;,
+{</p>
+<blockquote>
+<div>&#8216;template_name&#8217;:&#8217;registration/login.html&#8217;,
+&#8216;authentication_form&#8217;:EmailAuthenticationForm</div></blockquote>
+<p class="last">},
+name=&#8221;login&#8221;),</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>however, it is possible also to provide optional parameters within
+the url pattern itself using this format:</p>
+<blockquote>
+<div><tt class="docutils literal"><span class="pre">(?:/(?P&lt;sport&gt;[a-z\s]*))?</span></tt></div></blockquote>
+<p>explaination: the outer grouping <cite>()?</cite> is the regex pattern for optional. however,
+the <tt class="docutils literal"><span class="pre">?:</span></tt> is necessary to capture the sub-expression enclosed by the commonly used
+<tt class="docutils literal"><span class="pre">(?P&lt;name&gt;)</span></tt> expression.</p>
+<p>These two patterns can combined:</p>
+<blockquote>
+<div>url(r&#8217;^t/(?P&lt;slug&gt;[A-Za-z][a-zA-Z0-9-]+?)/$, OrganizationView.as_view(), name=&#8221;organization&#8221;),
+url(r&#8217;^t/(?P&lt;slug&gt;[A-Za-z][a-zA-Z0-9-]+?)/(?P&lt;sport&gt;[a-zs]*)/$&#8217;, OrganizationView.as_view(), name=&#8221;organization-with-sports&#8221;),</div></blockquote>
+<p>into:</p>
+<blockquote>
+<div>url(r&#8217;^t/(?P&lt;slug&gt;[A-Za-z][a-zA-Z0-9-]+?)(?:/(?P&lt;sport&gt;[a-zs]*))?/connects(?:/(?P&lt;year&gt;[0-9]{4}))?/?$&#8217;, OrganizationView.as_view(), name=&#8221;organization&#8221;),</div></blockquote>
+<p>which elimintes duplicate code (DRY) and tracking two different url name resolutions:</p>
+<blockquote>
+<div>from django.core.urlresolvers import</div></blockquote>
+<p>url(r&#8217;^t/(?P&lt;slug&gt;[A-Za-z][a-zA-Z0-9-]+?)(?:/(?P&lt;sport&gt;[a-zs]*))?/connects(?:/(?P&lt;year&gt;[0-9]{4}))?/?$&#8217;, OrganizationView.as_view(), {&#8216;root&#8217;:&#8217;connects&#8217;}, name=&#8221;connections-team&#8221;),</p>
+</div>
 
-  
-  <div id="search-results">
-  
-  </div>
 
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="app_template.html" class="btn btn-neutral" title="Application Template"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

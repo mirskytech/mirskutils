@@ -92,6 +92,7 @@
 <li class="toctree-l2"><a class="reference internal" href="static-files.html#environment-configuration">environment configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="static-files.html#import-statements">import statements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="static-files.html#css-and-less-sass-and-javascript">css (and less,sass) and javascript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="static-files.html#included-static-file-libraries">included static file libraries</a></li>
 </ul>
 </li>
 </ul>
@@ -110,11 +111,20 @@
 <li class="toctree-l2"><a class="reference internal" href="views.html#module-mirskutils.views">authenticated views</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="forms.html">mirskutils.forms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="forms.html#module-mirskutils.forms">forms</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contentblocks.html">mirskutils.contentblocks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contentblocks.html#module-mirskutils.contentblocks.models">Content Block Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contentblocks.html#module-mirskutils.contentblocks.templatetags.contentblocks">Template Tags</a></li>
+</ul>
+</li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="wsgi.html">wsgi application configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="project_template.html">project template</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="project_template.html#web-application">web application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_template.html">project templates</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="project_template.html#django-project">django project</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="app_template.html">Application Template</a><ul>
@@ -122,6 +132,7 @@
 <li class="toctree-l2"><a class="reference internal" href="app_template.html#section-2">Section 2</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="urls.html">url patterns</a></li>
 </ul>
 
         
@@ -159,9 +170,9 @@
   <div class="section" id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
 <p>install using pip:</p>
+<p><tt class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">mirskutils</span></tt></p>
+<p>or install from source:</p>
 <p><tt class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">git+ssh://git&#64;github.com/ajmirsky/mirskutils.git</span></tt></p>
-<p>or if you&#8217;re interested in staying up-to-date with the latest, install the source:</p>
-<p><tt class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">git+ssh://git&#64;github.com/ajmirsky/mirskutils.git#egg=mirskutils</span></tt></p>
 </div>
 
 
