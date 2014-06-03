@@ -1,12 +1,41 @@
-Django==1.4.3
-MySQL-python==1.2.4
-South==0.7.6
-argparse==1.2.1
-distribute==0.6.34
-django-admin-tools==0.4.1
-django-shrink==0.0.3.3
-pyScss==1.0.6
-wsgiref==0.1.2
-psycopg2==2.4.5
-jsonfield==0.9.5
+# "best of" packages
 
+Django
+Pillow
+jsonfield
+django-retracer
+South
+Sphinx
+boto
+django-bitfield
+celery
+django-haystack
+django-compressor
+django-fsm
+django-retracer
+django-sekizai
+django-tastypie
+    
+django-bootstrap-form
+django-admin-bootstrapped
+
+# one or the other
+psycopg2
+mysqldb
+
+python-social-auth
+requests
+https://github.com/ajmirsky/couchdb-python/tarball/master#egg=couchdb-0.9.1beta
+cython
+lxml
+beautifulsoup4
+
+# optional for deployment
+# uwsgi
+    
+# note: lxml should be compiled with static dependencies
+# >> export STATIC_DEPS='TRUE'
+# >> pip install lxml
+
+# note: packages above depend on pycrypto (and a few other packages and will break on OSX as of XCode5.1)
+# >> export ARCHFLAGS='-Wno-error=unused-command-line-argument-hard-error-in-future'

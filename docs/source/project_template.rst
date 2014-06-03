@@ -3,12 +3,12 @@
 project templates
 ======================================
 
-Once ``mirskutils`` is installed in your python environment, the template that is used
-for ``django-admin.py startproject MyProject`` is the :refs:`standardprojectemplate`.
+As of Django 1.5, you can install the templates included in ``mirskutils`` by specifying::
 
-If you'd like to use the alternative starter project templates, use the ``--template`` flag added as of Django 1.5.
+    django-admin.py startproject --template=<python env>/lib/python2.7/site-packagse/mirskutils/conf/project_template MyProjectName
 
-Each project comes with one or more ``requirements.txt`` file depending on which packages you might need.
+Each project comes with one or more ``requirements.txt`` file depending on which packages you might need; it can 
+be found under the ``conf`` subdirectory.
 
 
 django project
@@ -82,15 +82,16 @@ wingstub.py:
 realtime project
 ++++++++++++++++++++++++++++++++++++++++++++
 
-this project includes the :refs:`standardprojectemplate` plus the necessary application configuration, requirements file
+this project includes the :ref:`standardprojectemplate` plus the necessary application configuration, requirements file
 and examples for django to create long-running connections with a user's browsers:
 
     ::
     
-        >> django-admin.py startproject --template=lib/python2.7/site-packagse/conf/realtime_project MyProjectName
+        >> django-admin.py startproject --template=lib/python2.7/site-packagse/mirskutils/conf/realtime_project MyProjectName
     
-or
+django + frontend mvc
+++++++++++++++++++++++++++++++++++++++++++++
 
     ::
     
-        >> django-admin.py startproject --template=lib/python2.7/site-packages/conf/jsmvc_project MyProjectName
+        >> django-admin.py startproject --template=lib/python2.7/site-packages/mirskutils/conf/jsmvc_project MyProjectName
