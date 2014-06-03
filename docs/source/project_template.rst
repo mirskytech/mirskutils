@@ -87,11 +87,10 @@ and examples for django to create long-running connections with a user's browser
 
     ::
     
-        >> django-admin.py startproject --template=lib/python2.7/site-packagse/mirskutils/conf/realtime_project MyProjectName
+        >> django-admin.py startproject --template=<python env>lib/python2.7/site-packagse/mirskutils/conf/realtime_project MyProjectName
     
 django + frontend mvc
 ++++++++++++++++++++++++++++++++++++++++++++
 
-    ::
+    ***coming soon***
     
-        >> django-admin.py startproject --template=lib/python2.7/site-packages/mirskutils/conf/jsmvc_project MyProjectName
