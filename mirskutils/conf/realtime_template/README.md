@@ -14,7 +14,3 @@ References
 * http://uwsgi-docs.readthedocs.org/en/latest/Gevent.html
 * http://uwsgi-docs.readthedocs.org/en/latest/Async.html
 * http://codysoyland.com/2011/feb/6/evented-django-part-one-socketio-and-gevent/
-
-
-* http://www.gevent.org/gevent.event.html
-* http://www.gevent.org/gevent.queue.html
