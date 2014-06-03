@@ -169,10 +169,12 @@
             
   <div class="section" id="project-templates">
 <h1>project templates<a class="headerlink" href="#project-templates" title="Permalink to this headline">¶</a></h1>
-<p>Once <tt class="docutils literal"><span class="pre">mirskutils</span></tt> is installed in your python environment, the template that is used
-for <tt class="docutils literal"><span class="pre">django-admin.py</span> <span class="pre">startproject</span> <span class="pre">MyProject</span></tt> is the <a href="#id1"><span class="problematic" id="id2">:refs:`standardprojectemplate`</span></a>.</p>
-<p>If you&#8217;d like to use the alternative starter project templates, use the <tt class="docutils literal"><span class="pre">--template</span></tt> flag added as of Django 1.5.</p>
-<p>Each project comes with one or more <tt class="docutils literal"><span class="pre">requirements.txt</span></tt> file depending on which packages you might need.</p>
+<p>As of Django 1.5, you can install the templates included in <tt class="docutils literal"><span class="pre">mirskutils</span></tt> by specifying:</p>
+<div class="highlight-python"><div class="highlight"><pre>django-admin.py startproject --template=&lt;python env&gt;/lib/python2.7/site-packagse/mirskutils/conf/project_template MyProjectName
+</pre></div>
+</div>
+<p>Each project comes with one or more <tt class="docutils literal"><span class="pre">requirements.txt</span></tt> file depending on which packages you might need; it can
+be found under the <tt class="docutils literal"><span class="pre">conf</span></tt> subdirectory.</p>
 <div class="section" id="django-project">
 <h2>django project<a class="headerlink" href="#django-project" title="Permalink to this headline">¶</a></h2>
 <p>a quick way of creating a new project with the most commonly used elements:</p>
@@ -230,19 +232,18 @@ for <tt class="docutils literal"><span class="pre">django-admin.py</span> <span 
 </div>
 <div class="section" id="realtime-project">
 <h3>realtime project<a class="headerlink" href="#realtime-project" title="Permalink to this headline">¶</a></h3>
-<p>this project includes the <a href="#id3"><span class="problematic" id="id4">:refs:`standardprojectemplate`</span></a> plus the necessary application configuration, requirements file
+<p>this project includes the <em class="xref std std-ref">standardprojectemplate</em> plus the necessary application configuration, requirements file
 and examples for django to create long-running connections with a user&#8217;s browsers:</p>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre>&gt;&gt; django-admin.py startproject --template=lib/python2.7/site-packagse/conf/realtime_project MyProjectName
+<div><div class="highlight-python"><div class="highlight"><pre>&gt;&gt; django-admin.py startproject --template=&lt;python env&gt;lib/python2.7/site-packagse/mirskutils/conf/realtime_project MyProjectName
 </pre></div>
 </div>
 </div></blockquote>
-<p>or</p>
+</div>
+<div class="section" id="django-frontend-mvc">
+<h3>django + frontend mvc<a class="headerlink" href="#django-frontend-mvc" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre>&gt;&gt; django-admin.py startproject --template=lib/python2.7/site-packages/conf/jsmvc_project MyProjectName
-</pre></div>
-</div>
-</div></blockquote>
+<div><strong>*coming soon*</strong></div></blockquote>
 </div>
 </div>
 </div>
