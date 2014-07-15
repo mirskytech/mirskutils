@@ -28,7 +28,6 @@ Getting Started
     
     installation
     packages
-    environment
     static-files
 
 .. _util-docs:
@@ -43,7 +42,7 @@ Utilities
     sekizai
     views
     forms
-
+    contentblocks
 
 .. _best-practices-docs:
 
@@ -56,6 +55,7 @@ Utilities
     wsgi
     project_template
     app_template
+    urls
     
 
 

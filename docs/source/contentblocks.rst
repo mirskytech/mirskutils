@@ -27,13 +27,14 @@ to a user without giving the capability of mucking with the site's style and lay
 Content Block Model
 --------------------------------------
 
-.. automodule:: mirskutils.content.models
+.. automodule:: mirskutils.contentblocks.models
    :members: ContentBlock
    
 Template Tags
 ---------------------------------------   
 
-.. automodule:: contentblock_exists, contentblock_as_divs, contentblock
+.. automodule:: mirskutils.contentblocks.templatetags.contentblocks
+   :members: contentblock_exists, contentblock_as_divs, contentblock
 
 
 
