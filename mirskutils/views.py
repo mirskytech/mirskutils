@@ -9,7 +9,7 @@ from django.contrib import messages
 
 from django.core.exceptions import PermissionDenied
 from decorators import method_decorator
-
+from django.views.decorators.csrf import csrf_exempt
 
 
 class LoginRequiredView(View):
@@ -60,3 +60,14 @@ class SessionHeartbeat(View):
     """    
     def get(self, request):
         return HttpResponse('heartbeat')
+    
+    
+    
+class CSRFExemptView(View):
+    
+    @csrf_exempt
+    def dispatch(self, *args, **kwargs):
+            return super(CSRFExemptView, self).dispatch(*args, **kwargs)       
+
+
+
