@@ -8,6 +8,7 @@ from django.utils.safestring import mark_safe
 from django.contrib.sites.models import Site, RequestSite
 from urllib import urlopen, urlencode, quote, unquote
 from django.utils.safestring import mark_safe
+from django.utils.encoding import iri_to_uri
 
 
 register = template.Library()
@@ -186,3 +187,9 @@ def nonBreakHyphens(value):
 @register.filter
 def mod(num, val):
     return num % val
+
+
+@register.filter
+@stringfilter
+def encode(iri):
+    return iri_to_uri(iri)
