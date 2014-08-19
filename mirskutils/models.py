@@ -47,6 +47,7 @@ class Konstants:
 
 import dpath.util
 from django.db import models
+from jsonfield.fields import JSONField
 
 class ConfigurationMixin(models.Model):
     
