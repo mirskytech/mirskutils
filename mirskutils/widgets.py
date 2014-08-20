@@ -40,7 +40,7 @@ class AutoCompleteSelect(widgets.Select):
             'all':('lib/jqueryui/jquery-ui.custom.css',)
         }
         js = ('lib/jquery/jquery.min.js',
-            'lib/jqueryui/jquery-ui.custom.min.js',)
+            'lib/jqueryui/jquery-ui.custom.js',)
 
 class ImageFileInput(ClearableFileInput):
     
