@@ -4,7 +4,31 @@
 #from django.contrib.auth.models import AnonymousUser, User
 #from django.utils import timezone
 
-#from tastypie.authentication import Authentication
+from tastypie.authentication import Authentication
+
+class SuperUserAuthentication(Authentication):
+    
+    def is_authenticated(self, request, **kwargs):
+        if request.user.is_superuser:
+            return True
+        return False
+    
+    def get_identifier(self, request):
+        return request.user.username
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #import provider.oauth2
 #from provider.oauth2.models import AccessToken
