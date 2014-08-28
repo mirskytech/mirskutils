@@ -69,7 +69,7 @@ class ConfigurationMixin(models.Model):
         r = dpath.util.search(self.initial, path)
         for p in path.split('/'):
             if p not in r:
-                raise KeyError('option %s not part of model configuraiton' % path)
+                raise KeyError('option %s not part of model configuration' % path)
             r = r.pop(p)
             
         str_types = [type(""), type(u'')]
