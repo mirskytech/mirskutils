@@ -83,3 +83,44 @@ class ConfigurationMixin(models.Model):
         
     class Meta:
         abstract = True
+        
+        
+class StructuredDictionary(dict):
+    
+    def __init__(self, structure=None, *args, **kwargs):
+        self.structure = structure
+        super(StructuredDictionary,self).__init__(*args, **kwargs)
+    
+    def get(self, path, default=None):
+        r = dpath.util.search(dict(self.items()), path)
+        if not len(r):
+            r = dpath.util.search(self.structure, path)
+        if not len(r):
+            if default:
+                return default
+            raise KeyError("'%s' not part of field structure" % path)
+        for p in path.split('/'):                    
+            r = r.pop(p)
+        if not r and default:
+            return default
+        return r
+    
+    def set(self, path, value):
+        r = dpath.util.search(dict(self.items()), path)
+        for p in path.split('/'):
+            if p not in r:
+                raise KeyError("'%s' not part of field structure" % path)
+            r = r.pop(p)
+            
+        if isinstance(r, unicode) or isinstance(r, str):
+            if not isinstance(value, unicode) and not isinstance(value, str):
+                raise TypeError("option field '%s' should be a str or unicode, instead of a(n) %s" % (path,type(value).__name__))
+        elif type(r) is not type(value):
+            raise TypeError("option field '%s' should be a(n) %s, instead of a(n) %s" % (path, type(r).__name__,type(value).__name__))
+        dpath.util.new(self, path, value)
+        
+    def __getitem__(self, key):
+        return self.get(key)
+    
+    def __setitem__(self, key, value):
+        return self.set(key, value)    
