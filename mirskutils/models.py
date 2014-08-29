@@ -106,7 +106,7 @@ class StructuredDictionary(dict):
         return r
     
     def set(self, path, value):
-        r = dpath.util.search(dict(self.items()), path)
+        r = dpath.util.search(self.structure, path)
         for p in path.split('/'):
             if p not in r:
                 raise KeyError("'%s' not part of field structure" % path)

@@ -16,9 +16,9 @@ class StructuredDictionaryField(JSONField):
         
     def pre_init(self, value, obj):
         d = super(StructuredDictionaryField, self).pre_init(value, obj)
-        return StructuredDictionary(self.structure, **d)
-    
-        
+        if d:
+            return StructuredDictionary(self.structure, **d)
+        return StructuredDictionary(self.structure, **self.structure)
 
 try:
     from south.modelsinspector import add_introspection_rules
