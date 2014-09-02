@@ -6,7 +6,7 @@ from .models import StructuredDictionary
 
 class StructuredDictionaryField(JSONField):
     
-    def __init__(self, structure, *args, **kwargs):
+    def __init__(self, structure=None, *args, **kwargs):
         if 'default' in kwargs:
             raise FieldError('please use the structure argument to provide default values')
         if kwargs.get('blank', False) or kwargs.get('null',False):
@@ -22,7 +22,15 @@ class StructuredDictionaryField(JSONField):
 
 try:
     from south.modelsinspector import add_introspection_rules
-    add_introspection_rules([], ["^mirskutils\.fields\.(StructuredDictionaryField)"])
+    _rules = [
+        (StructuredDictionaryField,),
+        [],
+        {
+            "structure":["structure", {"default":None} ]
+        }
+    
+    ]
+    add_introspection_rules(_rules, ["^mirskutils\.fields\.(StructuredDictionaryField)"])
 except ImportError:
     pass
 
