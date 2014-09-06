@@ -52,3 +52,8 @@ def compress(context, data, name):
     '''
     
     return CompressorNode(nodelist=Template(data).nodelist, kind=name, mode='file').render(context=context)
+
+
+
+def compress_inline(context, data, name):
+    return CompressorNode(nodelist=Template(data).nodelist, kind=name, mode='inline').render(context=context, forced=True)
