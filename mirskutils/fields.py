@@ -22,14 +22,15 @@ class StructuredDictionaryField(JSONField):
 
 try:
     from south.modelsinspector import add_introspection_rules
-    _rules = [
-        (StructuredDictionaryField,),
-        [],
-        {
-            "structure":["structure", {"default":None} ]
-        }
+    _rules = []
+    #_rules = [
+        #(StructuredDictionaryField,),
+        #[],
+        #{
+            #"structure":["structure", {"default":None} ]
+        #}
     
-    ]
+    #]
     add_introspection_rules(_rules, ["^mirskutils\.fields\.(StructuredDictionaryField)"])
 except ImportError:
     pass

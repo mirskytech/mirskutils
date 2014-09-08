@@ -193,3 +193,9 @@ def mod(num, val):
 @stringfilter
 def encode(iri):
     return iri_to_uri(iri)
+
+
+@register.filter
+@stringfilter
+def toAscii(text):
+    return text.encode('ascii', 'ignore') 
