@@ -61,16 +61,17 @@ class ImageFileInput(ClearableFileInput):
         if value and hasattr(value, 'url'):
             context['url'] = srcThumbnail(value.url, self.width, self.height)
             
-        t = Template('''{% if url %}<img id="{{ name }}-img" src="{{ url }}">
-        <div>
+        t = Template('''{% if url %}<img style="float:left" class="image-file-input" id="{{ name }}-img" src="{{ url }}">
+        <div style="float:left; margin-left:50px;" class="image-file-input-clear">
             <label for="{{ name }}-clear_id">Clear</label>     
             <input id="{{ name }}-clear_id" name="{{ name }}-clear" type="checkbox" />
         </div>
         {% endif %}
-        <div style="margin-top:10px; padding:0px;">
+        <div class="image-file-input-browse" style="float:left; margin-left:50px">
             {% if url %}<label for="{{ name }}">Change</label>{% endif %}
             <input id="id_%(name)ss" name="{{ name }}" type="file" />
         </div>
+        <div style="clear:both">&nbsp;</div
         ''')
         
         return mark_safe(t.render(Context(context)))    
