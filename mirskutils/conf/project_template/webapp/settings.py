@@ -10,22 +10,22 @@ TIME_ZONE = 'America/New_York'
 
 gettext = lambda s: s
 
-PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
 TEMPLATE_DIRS = ()
-for root, dirs, files in os.walk(PROJECT_PATH):
+for root, dirs, files in os.walk(BASE_DIR):
     if 'templates' in dirs: TEMPLATE_DIRS = TEMPLATE_DIRS + (os.path.join(root, 'templates'),)
 
 FIXTURE_DIRS = ()
-for root, dirs, files in os.walk(PROJECT_PATH):
+for root, dirs, files in os.walk(BASE_DIR):
     if 'fixtures' in dirs: FIXTURE_DIRS = FIXTURE_DIRS + (os.path.join(root, 'fixtures'),)
 
 
 STATICFILES_DIRS = ( )
-for root, dirs, files in os.walk(PROJECT_PATH):
+for root, dirs, files in os.walk(BASE_DIR):
     if 'static' in dirs: STATICFILES_DIRS = STATICFILES_DIRS + (os.path.join(root, 'static'),)
 
-SECRET_FILE = os.path.join(PROJECT_PATH, 'secret.txt')
+SECRET_FILE = os.path.join(BASE_DIR, 'secret.txt')
 try:
     SECRET_KEY = open(SECRET_FILE).read().strip()
 except IOError:
@@ -45,22 +45,16 @@ STATICFILES_FINDERS = (
     'compressor.finders.CompressorFinder',
 )
 
-
-TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
-)
-
 MIDDLEWARE_CLASSES = (
-    'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # 'mirskutils.middleware.SessionIdleTimeout',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
+
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
@@ -92,7 +86,6 @@ INSTALLED_APPS = (
     'django.contrib.admin',    
     
     'mirskutils',
-    'south',
     'compressor',
     'sekizai',
     'bootstrapform',
@@ -106,7 +99,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 DATABASE_ROUTERS = ['webapp.routers.ModelDatabaseRouter',]
 
 COMPRESS_PRECOMPILERS = (
-    ('text/less', 'lessc --include-path=%s {infile} {outfile}' % PROJECT_PATH),
+    ('text/less', 'lessc --include-path=%s {infile} {outfile}' % BASE_DIR),
 )
 
 LOGGING = {
@@ -140,7 +133,7 @@ LOGGING = {
         'logfile': {
             'level':'DEBUG',
             'class':'logging.handlers.RotatingFileHandler',
-            'filename': PROJECT_PATH + "/{{ project_name}}.log",
+            'filename': BASE_DIR + "/{{ project_name}}.log",
             'maxBytes': 50000,
             'backupCount': 2,
             'formatter': 'standard',
