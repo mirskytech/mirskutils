@@ -46,6 +46,16 @@ def makeAbsolute(context, uri):
 def urlAbsolute(context, viewname, *args, **kwargs):
     return makeAbsolute(urlOptions(context, viewname, *args, **kwargs))
 
+
+def _stylesheet(kind, context, stylesheet, is_absolute):
+    if not stylesheet:
+        return ""
+    uri = "%s%s" % (settings.STATIC_URL, stylesheet)
+    if is_absolute:
+        uri = makeAbsolute(context, uri)
+    return '<link rel="stylesheet" type="text/%s" href="%s" />' % (kind, "%s" % uri)
+
+
 @register.simple_tag(takes_context=True)
 def css(context, stylesheet, is_absolute=False):
     '''
@@ -76,6 +86,12 @@ def less(context, stylesheet, is_absolute=False):
     if is_absolute:
         uri = makeAbsolute(context, uri)
     return '<link rel="stylesheet" type="text/less" href="%s" />' % uri
+
+@register.simple_tag(takes_context=True)
+def scss(context, stylesheet, is_absolute=False): return _stylesheet('scss', context, stylesheet, is_absolute)
+
+@register.simple_tag(takes_context=True)
+def sass(context, stylesheet, is_absolute=False): return _stylesheet('sass', context, stylesheet, is_absolute)
 
 @register.simple_tag(takes_context=True)
 def js(context, script, is_absolute=False):

@@ -20,9 +20,12 @@ else:
 dependencies = [
     'Django',
     'jsonfield',
-    'South',
     'django-compressor',
     'django-sekizai',
+    'django-admin-bootstrapped',
+    'django-bootstrap-form',
+    'dpath',
+    'psycopg2'
 ]
 
 
