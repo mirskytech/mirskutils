@@ -28,6 +28,9 @@ class Konstants:
         for ks in self.klist:
             if v==ks.v: return ks.id
         return None
+    
+    def keys(self):
+        return [k.id for k in self.klist]
 
     def display(self, k):
         for ks in self.klist:
@@ -44,6 +47,12 @@ class Konstants:
     
     def append(self, k):
         setattr(self, k.id, k.v)
+
+    def __iter__(self):
+        return self.klist.__iter__()
+    
+    def next(self):
+        return self.klist.next()        
 
 import dpath.util
 from django.db import models
