@@ -132,4 +132,6 @@ class StructuredDictionary(dict):
         return self.get(key)
     
     def __setitem__(self, key, value):
+        if '/' not in key:
+            return super(StructuredDictionary, self).__setitem__(key,value)
         return self.set(key, value)    
