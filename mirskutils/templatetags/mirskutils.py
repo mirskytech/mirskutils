@@ -5,7 +5,8 @@ from django.core.urlresolvers import reverse
 from django.template.defaultfilters import stringfilter
 from django.template import Context, Template
 from django.utils.safestring import mark_safe
-from django.contrib.sites.models import Site, RequestSite
+from django.contrib.sites.models import Site
+from django.contrib.sites.requests import RequestSite
 from urllib import urlopen, urlencode, quote, unquote
 from django.utils.safestring import mark_safe
 from django.utils.encoding import iri_to_uri
@@ -74,7 +75,7 @@ def css(context, stylesheet, is_absolute=False):
     uri = "%s%s" % (settings.STATIC_URL, stylesheet)
     if is_absolute:
         uri = makeAbsolute(context, uri)
-    return '<link rel="stylesheet" type="text/css" href="%s" />' % "%s" % uri
+    return mark_safe('<link rel="stylesheet" type="text/css" href="%s" />' % "%s" % uri)
 
 
 @register.simple_tag(takes_context=True)
@@ -85,7 +86,7 @@ def less(context, stylesheet, is_absolute=False):
     uri = "%s%s" % (settings.STATIC_URL, stylesheet)
     if is_absolute:
         uri = makeAbsolute(context, uri)
-    return '<link rel="stylesheet" type="text/less" href="%s" />' % uri
+    return mark_safe('<link rel="stylesheet" type="text/less" href="%s" />' % uri)
 
 @register.simple_tag(takes_context=True)
 def scss(context, stylesheet, is_absolute=False): return _stylesheet('scss', context, stylesheet, is_absolute)
@@ -110,7 +111,7 @@ def js(context, script, is_absolute=False):
     uri = "%s%s" % (settings.STATIC_URL, script)
     if is_absolute:
         uri = makeAbsolute(context, uri)    
-    return '<script type="text/javascript" src="%s"></script>' % uri
+    return mark_safe('<script type="text/javascript" src="%s"></script>' % uri)
 
 
 #formTemplate = Template('''{% if form.is_multipart and button %}

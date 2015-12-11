@@ -6,7 +6,7 @@ from .models import StructuredDictionary
 
 class StructuredDictionaryField(JSONField):
     
-    def __init__(self, structure=None, *args, **kwargs):
+    def __init__(self, structure={}, *args, **kwargs):
         if 'default' in kwargs:
             raise FieldError('please use the structure argument to provide default values')
         if kwargs.get('blank', False) or kwargs.get('null',False):

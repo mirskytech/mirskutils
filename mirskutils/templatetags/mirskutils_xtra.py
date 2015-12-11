@@ -1,4 +1,5 @@
-from django.template import Node, Library, Variable, FilterExpression, TemplateSyntaxError
+from django.template import Node, Library, Variable, TemplateSyntaxError
+from django.template.base import FilterExpression
 import math
 import re
 

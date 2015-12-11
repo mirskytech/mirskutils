@@ -1,6 +1,6 @@
 from django.template import Library as DjangoTemplateLibrary
 from inspect import getargspec
-from django.template.base import TagHelperNode, parse_bits
+from django.template.library import TagHelperNode, parse_bits
 
 class Library(DjangoTemplateLibrary):
 
