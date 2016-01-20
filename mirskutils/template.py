@@ -25,7 +25,11 @@ def with_as(f):
         {{ time }}
     """
     @wraps(f)
-    def new_f(parser, token):
+    def new_f(parser, token=None):
+        
+        if not token or type(token) == type("string"):
+            return f(parser, token)
+        
         contents = token.split_contents()
 
         if len(contents) < 3 or contents[-2] != 'as':
