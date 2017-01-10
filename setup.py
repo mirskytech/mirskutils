@@ -25,7 +25,6 @@ dependencies = [
     'django-admin-bootstrapped',
     'django-bootstrap-form',
     'dpath',
-    'psycopg2'
 ]
 
 
