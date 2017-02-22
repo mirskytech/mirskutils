@@ -2,7 +2,7 @@ import os
 
 from django.core.management.base import CommandError
 from django.core.management.templates import TemplateCommand
-from django.utils.importlib import import_module
+# from django.utils.importlib import import_module
 
 import mirskutils
 
