@@ -3,6 +3,8 @@ from django.core.exceptions import FieldError
 import dpath.util
 from .models import StructuredDictionary
 
+from copy import deepcopy
+
 
 class StructuredDictionaryField(JSONField):
     
@@ -16,9 +18,10 @@ class StructuredDictionaryField(JSONField):
         
     def pre_init(self, value, obj):
         d = super(StructuredDictionaryField, self).pre_init(value, obj)
+        structure = deepcopy(self.structure)
         if d:
-            return StructuredDictionary(self.structure, **d)
-        return StructuredDictionary(self.structure, **self.structure)
+            return StructuredDictionary(structure, **d)
+        return StructuredDictionary(structure, **structure)
 
 try:
     from south.modelsinspector import add_introspection_rules
