@@ -7,7 +7,6 @@ except ImportError:
     pass
 
 from StringIO import StringIO
-#from cStringIO import StringIO as cStringIO
 from django.conf import settings
 from django.core.files.storage import default_storage
 from django import template
@@ -56,7 +55,6 @@ def srcThumbnail(image_url, width, height, quality=95, rotate=0, blur=0, aspect=
     logger.debug("%s create image" % image_url)
     # check locally
     if local.exists(image_url):
-        f = local.open(image_url)
         try:
             image = Image.open(local.open(image_url))
             logger.debug("%s image found locally" % image_url)
