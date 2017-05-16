@@ -99,7 +99,7 @@ def json_redirect(request, path):
 #----------------------------------------------------------------------
 def sign_s3_url(url, timeout=None):
     """create a signed url for amazon s3 authetication, requires that ``boto`` be installed"""
-    c = boto.connect_cloudfront(settings.CLOUDFRONT_KEY, settings.CLOUDFRONT_SECRET)
+    c = boto.connect_cloudfront(settings.AWS_ACCESS_KEY_ID, settings.AWS_SECRET_ACCESS_KEY)
     d = c.get_streaming_distribution_info(settings.CLOUDFRONT_DISTRIBUTION_ID)
     e = int(time.time()+timeout if timeout else getattr(settings, 'CLOUDFRONT_URL_TIMEOUT', 10))
     return d.create_signed_url(url, settings.CLOUDFRONT_KEY_PAIR_ID, private_key_file=settings.CLOUDFRONT_PEM)   
